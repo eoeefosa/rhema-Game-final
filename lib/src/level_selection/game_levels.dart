@@ -1,24 +1,21 @@
-const gamelevels = [
-  GameLevel(
+List gamelevels = [
+  const GameLevel(
     number: 1,
     difficulty: 5,
-     // TODO: When ready, change these achievement IDs.
+    // TODO: When ready, change these achievement IDs.
     // You configure this in App Store Connect.
     achievementIdIOS: "firstwin",
     // You get this string when you configure an achievement in Play Console.
     achievementIdAndroid: "firstwee",
   ),
-  GameLevel(
-    number: 2,
-    difficulty: 42,
-    // achievementIdIOS: "firstwin",
-    // achievementIdAndroid: "firstwee",
-  ),
-  GameLevel(
-    number: 3,
-    difficulty: 100,
-    achievementIdIOS: "finished",
-    achievementIdAndroid: "finished",
+  ...List.generate(
+    10,
+    (index) => GameLevel(
+      number: 2 + index,
+      difficulty: index * 10 + 6,
+      achievementIdIOS: "finished",
+      achievementIdAndroid: "finished",
+    ),
   )
 ];
 

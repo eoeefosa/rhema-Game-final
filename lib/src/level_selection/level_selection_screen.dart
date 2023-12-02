@@ -3,12 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/audio/audio_controller.dart';
 import 'package:rhemabiblequiz/src/audio/sounds.dart';
+import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
 import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 import 'package:rhemabiblequiz/src/style/responsive_screen.dart';
 
-import 'game_levels.dart';
+import 'components/level_card.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
   const LevelSelectionScreen({super.key});
@@ -21,7 +22,7 @@ class LevelSelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final pallette = context.watch<Palette>();
     final playerProgress = context.watch<PlayerProgress>();
-
+    final questions = context.watch<Questions>();
     return Scaffold(
       backgroundColor: pallette.backgroundLevelSelection,
       body: ResponsiveScreen(
@@ -41,19 +42,41 @@ class LevelSelectionScreen extends StatelessWidget {
               const SizedBox(height: 50),
               Expanded(
                   child: ListView(children: [
-                for (final level in gamelevels)
-                  ListTile(
-                    enabled:
-                        playerProgress.highestLevelReached >= level.number - 1,
-                    onTap: () {
-                      final audioController = context.read<AudioController>();
-                      audioController.playSfx(SfxType.buttonTap);
-                      GoRouter.of(context).go('/play/session/${level.number}');
-                    },
-                    // TODO: ADD TEXT STYLE
-                    leading: Text(level.number.toString()),
-                    title: Text('Level #${level.number}'),
-                  ),
+                GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 11,
+                    itemBuilder: (BuildContext context, index) {
+                      return LevelCard(
+                        level: index + 1,
+                        stars: questions.ratings[index],
+                        isOpen: index < playerProgress.highestLevelReached,
+                        onpressed: () {
+                          questions.chooseLevel(index);
+                          final audioController =
+                              context.read<AudioController>();
+                          audioController.playSfx(SfxType.buttonTap);
+                          GoRouter.of(context)
+                              .go('/play/quiz_game', extra: {'level': (index)});
+                        },
+                      );
+                    }),
+                // for (final level in gamelevels)
+                //   ListTile(
+                //     enabled:
+                //         playerProgress.highestLevelReached >= level.number - 1,
+                //     onTap: () {
+                //       final audioController = context.read<AudioController>();
+                //       audioController.playSfx(SfxType.buttonTap);
+                //       GoRouter.of(context).go('/play/session/${level.number}');
+                //     },
+                //     // TODO: ADD TEXT STYLE
+                //     leading: Text(level.number.toString()),
+                //     title: Text('Level #${level.number}'),
+                //   ),
                 ListTile(
                   onTap: () {
                     final audioController = context.read<AudioController>();

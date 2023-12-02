@@ -19,6 +19,8 @@ import 'package:rhemabiblequiz/src/settings/settings.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 import 'package:rhemabiblequiz/src/style/snack_bar.dart';
 
+import 'src/bible_quiz_game/provider/questions.dart';
+
 // Future<void> main() async {
 // FirebaseCrashlytics? crashlytics;
 // if (!kIsWeb && (Platform.isIOS || Platform.isAndroid)) {
@@ -75,6 +77,9 @@ class MyApp extends StatelessWidget {
     return AppLifecycleObserver(
       child: MultiProvider(
         providers: [
+           ChangeNotifierProvider<Questions>(
+            create: (context) => Questions(),),
+ 
           // check  buttom for differences btw ChangeNotifierProvider and Provider
           ChangeNotifierProvider(create: (context) {
             var progress = PlayerProgress(playerProgressPersistence);
