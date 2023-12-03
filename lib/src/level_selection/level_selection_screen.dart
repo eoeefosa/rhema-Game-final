@@ -23,77 +23,127 @@ class LevelSelectionScreen extends StatelessWidget {
     final pallette = context.watch<Palette>();
     final playerProgress = context.watch<PlayerProgress>();
     final questions = context.watch<Questions>();
+    final size = MediaQuery.of(context).size;
+    const gap = SizedBox(height: 8);
     return Scaffold(
       backgroundColor: pallette.backgroundLevelSelection,
-      body: ResponsiveScreen(
-          squarishMainArea: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: Center(
-                  child: Text(
-                    'Select level',
-                    style: TextStyle(
-                        fontFamily: AppConstants.fontfamilypermenent,
-                        fontSize: 30),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/wood.jpg"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: -30,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: size.height * .15,
+                width: size.width,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/flower.png"),
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
-              Expanded(
-                  child: ListView(children: [
-                GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 11,
-                    itemBuilder: (BuildContext context, index) {
-                      return LevelCard(
-                        level: index + 1,
-                        stars: questions.ratings[index],
-                        isOpen: index < playerProgress.highestLevelReached,
-                        onpressed: () {
-                          questions.chooseLevel(index);
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                height: size.height * .8,
+                width: size.width * .8,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1,
+                    color: const Color.fromRGBO(149, 125, 103, 1),
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                  image: const DecorationImage(
+                    image: AssetImage('assets/images/boob.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      child: const Text('Back'),
+                      onPressed: () {
+                        GoRouter.of(context).pop();
+                      },
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Center(
+                        child: Text(
+                          'Select level',
+                          style: TextStyle(
+                            fontFamily: AppConstants.fontfamilypermenent,
+                            fontSize: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+                    Expanded(
+                        child: ListView(children: [
+                      GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 11,
+                          itemBuilder: (BuildContext context, index) {
+                            return LevelCard(
+                              level: index + 1,
+                              stars: questions.ratings[index],
+                              isOpen:
+                                  index <= playerProgress.highestLevelReached,
+                              onpressed: () {
+                                questions.chooseLevel(index);
+                                final audioController =
+                                    context.read<AudioController>();
+                                audioController.playSfx(SfxType.buttonTap);
+                                GoRouter.of(context).go('/play/quiz_game',
+                                    extra: {'level': (index)});
+                              },
+                            );
+                          }),
+                      // for (final level in gamelevels)
+                      //   ListTile(
+                      //     enabled:
+                      //         playerProgress.highestLevelReached >= level.number - 1,
+                      //     onTap: () {
+                      //       final audioController = context.read<AudioController>();
+                      //       audioController.playSfx(SfxType.buttonTap);
+                      //       GoRouter.of(context).go('/play/session/${level.number}');
+                      //     },
+                      //     // TODO: ADD TEXT STYLE
+                      //     leading: Text(level.number.toString()),
+                      //     title: Text('Level #${level.number}'),
+                      //   ),
+                      ListTile(
+                        onTap: () {
                           final audioController =
                               context.read<AudioController>();
                           audioController.playSfx(SfxType.buttonTap);
-                          GoRouter.of(context)
-                              .go('/play/quiz_game', extra: {'level': (index)});
+                          GoRouter.of(context).go('/play/quiz_game');
                         },
-                      );
-                    }),
-                // for (final level in gamelevels)
-                //   ListTile(
-                //     enabled:
-                //         playerProgress.highestLevelReached >= level.number - 1,
-                //     onTap: () {
-                //       final audioController = context.read<AudioController>();
-                //       audioController.playSfx(SfxType.buttonTap);
-                //       GoRouter.of(context).go('/play/session/${level.number}');
-                //     },
-                //     // TODO: ADD TEXT STYLE
-                //     leading: Text(level.number.toString()),
-                //     title: Text('Level #${level.number}'),
-                //   ),
-                ListTile(
-                  onTap: () {
-                    final audioController = context.read<AudioController>();
-                    audioController.playSfx(SfxType.buttonTap);
-                    GoRouter.of(context).go('/play/quiz_game');
-                  },
-                  title: const Text('Quiz game'),
-                )
-              ])),
-            ],
-          ),
-          rectangularMenuArea: ElevatedButton(
-            child: const Text('Back'),
-            onPressed: () {
-              GoRouter.of(context).pop();
-            },
-          )),
+                        title: const Text('Quiz game'),
+                      )
+                    ])),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -72,6 +72,10 @@ class Questions extends ChangeNotifier {
 
   void chooseLevel(int level) {
     currentLevel = level;
+    // TODO: MIGHT REMOVE THIS
+    currentQuestionIndex = 0;
+    isFinish = false;
+    
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (seconds == 0) {
         timer.cancel();

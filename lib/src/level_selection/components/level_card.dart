@@ -37,18 +37,18 @@ class LevelCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Star(top: 22, isFull: stars > 0, isOpen: isOpen),
+              Star(top: 14, isFull: stars > 0, isOpen: isOpen),
               Star(
                 isFull: stars > 1,
                 isOpen: isOpen,
               ),
-              Star(top: 22, isFull: stars > 2, isOpen: isOpen),
+              Star(top: 14, isFull: stars > 2, isOpen: isOpen),
             ],
           ),
           InkWell(
               onTap: isOpen ? onpressed : null,
               child: Padding(
-                padding: const EdgeInsets.only(top: 37, bottom: 10),
+                padding: const EdgeInsets.only(top: 15, bottom: 10),
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
@@ -63,17 +63,15 @@ class LevelCard extends StatelessWidget {
                       'Level \n $level',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white.withOpacity(isOpen ? 1 : 2),
+                        color: Colors.blue.withOpacity(isOpen ? .9 : .2),
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
                       ),
                     ),
                     if (!isOpen)
                       const Padding(
-                        padding: EdgeInsets.only(top: 80),
+                        padding: EdgeInsets.only(top: 10),
                         child: Icon(
                           Icons.lock,
-                          size: 40,
                           color: Colors.amber,
                         ),
                       )
@@ -103,8 +101,7 @@ class Star extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 3, vertical: top),
       child: Icon(
         isFull ? Icons.star_rounded : Icons.star_outline_rounded,
-        size: 43,
-        color: Colors.amber.withOpacity(isOpen ? .9 : .2),
+        color: Colors.amber.withOpacity(isOpen ? .9 : .5),
       ),
     );
   }

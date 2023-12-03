@@ -13,6 +13,7 @@ class ButtomOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         /// pause the game
         ElevatedButton(
@@ -49,7 +50,7 @@ class ButtomOptions extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             child: Icon(
               Icons.pause,
-              size: 30,
+              // size: 30,
               color: contextColor,
             ),
           ),

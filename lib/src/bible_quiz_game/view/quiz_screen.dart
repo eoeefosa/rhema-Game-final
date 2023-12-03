@@ -55,7 +55,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 height: 8,
               ),
               Titlebar(
-                leveldifficulty: 'Level ${question.currentLevel}',
+                leveldifficulty: 'Level ${question.currentLevel! + 1}',
                 maxStar: question.ratings[question.currentLevel!],
                 score: question.rightAnswers,
                 life: question.rightAnswers,
@@ -81,7 +81,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     ],
                   ),
                   Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter,
                     child: Column(children: [
                       const SizedBox(
                         height: 16,

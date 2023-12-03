@@ -3,4 +3,6 @@ class AppConstants {
   static const fontfamilyLuckiestgut = 'LuckiestGuy-Regular';
 
   static const boobimage = 'assets/images/boob.png';
+
+  static const gamePoints = 1000;
 }
