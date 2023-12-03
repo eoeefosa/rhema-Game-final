@@ -10,8 +10,8 @@ abstract class PlayerProgressPersistence {
 
   /// when reseting rating=0, levelindex=highestlevelindex
   Future<void> saveRating({
-    int rating = 0,
+     required int rating,
     required int levelindex,
-    bool resetRatings = false,
+     required bool resetRatings,
   });
 }

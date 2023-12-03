@@ -28,6 +28,7 @@ class _QuizScreenState extends State<QuizScreen> {
   int? gameScore;
   int rightAnswer = 0;
   int gamelevel = 1;
+  int currentquestion = 1;
 
   bool newLevelUnlock = false;
   @override
@@ -44,12 +45,13 @@ class _QuizScreenState extends State<QuizScreen> {
       ),
       child: Consumer<Questions>(builder: (context, question, child) {
         gamelevel = question.currentLevel!;
+        currentquestion = question.currentQuestionIndex;
         return MultiProvider(
           providers: [
             ChangeNotifierProvider(
               create: (context) => LevelState(
-                questionisFinish: question.isFinish,
-                // goal: widget.level.difficulty,
+                // TODO: CHANGE THIS TO ISFINISH
+                questionisFinish: currentquestion == 3,
                 onWin: _playerWon,
               ),
             ),
@@ -152,26 +154,34 @@ class _QuizScreenState extends State<QuizScreen> {
                                 bool isSelected = false;
                                 return Padding(
                                   padding: EdgeInsets.all(gap.height!),
-                                  child: OptionCard(
-                                    option:
-                                        question.currentQuestion.options[index],
-                                    answerCardStatus:
-                                        question.answersStatus[index],
-                                    onTap: () async {
-                                      gameScore = question.currentScore;
-                                      question.updateCurrentLevelRating();
-                                      rightAnswer = question.rightAnswers;
-                                      if (!isSelected) {
-                                        question.chooseAnswer(index);
-                                      }
-                                      isSelected = true;
-                                      await Future.delayed(
-                                          const Duration(milliseconds: 00));
-                                      if (!question.isFinish) {
-                                        question.nextQuestion();
-                                      }
-                                    },
-                                  ),
+                                  child: Consumer<LevelState>(
+                                      builder: (context, levelState, child) {
+                                    return OptionCard(
+                                      option: question
+                                          .currentQuestion.options[index],
+                                      answerCardStatus:
+                                          question.answersStatus[index],
+                                      onTap: () async {
+                                        levelState.evaluate();
+                                        print(
+                                            'question is finish= $currentquestion');
+                                        gameScore = question.currentScore;
+                                        question.updateCurrentLevelRating();
+                                        rightAnswer = question.rightAnswers;
+
+                                        if (!isSelected) {
+                                          question.chooseAnswer(index);
+                                        }
+                                        isSelected = true;
+                                        // TODO: MAKE DYNAMIC
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 200));
+                                        if (!question.isFinish) {
+                                          question.nextQuestion();
+                                        }
+                                      },
+                                    );
+                                  }),
                                 );
                               },
                             ),
@@ -219,16 +229,15 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Future<void> _playerWon() async {
+    print('Player won called in quiz screen');
     final finScore = Score(
       gamelevel,
       3,
       DateTime.now().difference(_startOfPlay),
     );
-    final score = gameScore;
+    final score = gameScore ?? 0;
     final playerProgress = context.read<PlayerProgress>();
-    if (score != null) {
-      playerProgress.addPoints(score);
-    }
+    playerProgress.addPoints(score);
     final previousLevel = playerProgress.highestLevelReached;
     playerProgress.addStar(level: gamelevel, star: rightAnswer);
 

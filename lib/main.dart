@@ -77,9 +77,10 @@ class MyApp extends StatelessWidget {
     return AppLifecycleObserver(
       child: MultiProvider(
         providers: [
-           ChangeNotifierProvider<Questions>(
-            create: (context) => Questions(),),
- 
+          ChangeNotifierProvider<Questions>(
+            create: (context) => Questions(),
+          ),
+
           // check  buttom for differences btw ChangeNotifierProvider and Provider
           ChangeNotifierProvider(create: (context) {
             var progress = PlayerProgress(playerProgressPersistence);

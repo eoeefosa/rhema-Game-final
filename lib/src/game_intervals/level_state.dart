@@ -8,10 +8,12 @@ class LevelState extends ChangeNotifier {
   final VoidCallback onWin;
   final bool questionisFinish;
 
-  LevelState({required this.onWin, this.questionisFinish = false});
+  LevelState({required this.onWin, required this.questionisFinish});
 
   void evaluate() {
+    print('Evaluate from level State called ');
     if (questionisFinish) {
+      print('Question is finished Evaluate from level State called ');
       onWin();
     }
   }

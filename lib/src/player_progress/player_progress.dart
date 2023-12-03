@@ -13,7 +13,7 @@ class PlayerProgress extends ChangeNotifier {
   int _points = AppConstants.gamePoints;
   int _totalstars = 0;
   int totalLevel = Questions().questions.last.level;
-  List<int> _ratings = generateRatings(Questions().questions.last.level);
+  List<int> _ratings = generateRatings(11);
 
   static List<int> generateRatings(int number) {
     return List.generate(number, (index) => 0);
@@ -24,9 +24,9 @@ class PlayerProgress extends ChangeNotifier {
   int get maxstarRequired => totalLevel * 3;
 
   void addStar({required int level, required int star}) {
-    int prevRating = _ratings[level - 1];
+    int prevRating = _ratings[level];
     if (prevRating < star) {
-      _ratings[level - 1] = star;
+      _ratings[level] = star;
       _totalstars = _ratings.sum;
       updateLevel();
       notifyListeners();
@@ -71,6 +71,7 @@ class PlayerProgress extends ChangeNotifier {
       notifyListeners();
     } else if (_ratings[_highestLevelReached] < saverating) {
       await _store.saveRating(
+        resetRatings: false,
         rating: _ratings[_highestLevelReached],
         levelindex: _highestLevelReached,
       );

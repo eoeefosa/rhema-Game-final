@@ -24,15 +24,17 @@ class Questions extends ChangeNotifier {
   int currentQuestionIndex = 0;
   int? currentQuestionAnswerIndex;
   int _rightAnswers = 0;
-  bool isFinish = false;
+  bool _isFinish = false;
   int? currentScore;
+
+  bool get isFinish => _isFinish;
 
   int get rightAnswers => _rightAnswers;
   Timer? timer;
   int seconds = 60;
   Question get currentQuestion =>
       questions[currentLevel! * 4 + currentQuestionIndex];
-      // TODO: CHANGE THE LEVELS IN THIS RATING
+  // TODO: CHANGE THE LEVELS IN THIS
   List<int> ratings = List.generate(11, (index) => 0);
 
   Timer? questionTimer;
@@ -78,7 +80,7 @@ class Questions extends ChangeNotifier {
     // TODO: MIGHT REMOVE THIS
     currentQuestionIndex = 0;
     currentQuestionAnswerIndex = null;
-    isFinish = false;
+    _isFinish = false;
 
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (seconds == 0) {
@@ -110,7 +112,7 @@ class Questions extends ChangeNotifier {
     currentLevel = null;
     currentQuestionAnswerIndex = 0;
     _rightAnswers = 0;
-    isFinish = false;
+    _isFinish = false;
     currentQuestionAnswerIndex = null;
     notifyListeners();
   }
@@ -125,12 +127,17 @@ class Questions extends ChangeNotifier {
 
   void nextQuestion() {
     if (currentQuestionIndex == 3) {
+      // TODO : I CANT REMEMBER WHY IT WAS DOWN
+      _isFinish = true;
+
+      print('Questions provider: _isFinish ran value of _isFinish=$_isFinish');
       currentScore = _rightAnswers * (60 - seconds);
+      notifyListeners();
+
       seconds = 60;
       timer!.cancel();
       timer = null;
       updateCurrentLevelRating();
-      isFinish = true;
     } else {
       currentQuestionIndex++;
       currentQuestionAnswerIndex = null;

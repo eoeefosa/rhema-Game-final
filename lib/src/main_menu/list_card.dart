@@ -24,15 +24,13 @@ class LIstcard extends StatelessWidget {
               Colors.green.withOpacity(.5),
               Colors.green.withOpacity(.8),
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-            containercontent: Expanded(
-              child: Text(
-                text,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
-                textAlign: TextAlign.center,
+            containercontent: Text(
+              text,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
