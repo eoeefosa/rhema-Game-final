@@ -31,4 +31,40 @@ class LocalStoragePlayerProgressPersistence extends PlayerProgressPersistence {
     final prefs = await instanceFuture;
     await prefs.setInt('gamepoints', point);
   }
+
+  @override
+  Future<int> getLevelRating(int level) async {
+    final prefs = await instanceFuture;
+    return prefs.getInt('LevelRating$level') ?? 0;
+  }
+
+  @override
+  Future<int> getStars() async {
+    final prefs = await instanceFuture;
+    return prefs.getInt('Stars') ?? 0;
+  }
+
+  @override
+  Future<void> saveStars(int totalStar) async {
+    final prefs = await instanceFuture;
+    await prefs.setInt('Stars', totalStar);
+  }
+
+  @override
+  Future<void> saveRating(
+      {int rating = 0,
+      required int levelindex,
+      bool resetRatings = false}) async {
+    print(
+        'from local_Storage_persistence rating=$rating, resetRating=$resetRatings');
+    final prefs = await instanceFuture;
+    if (resetRatings) {
+      for (int level = 0; level < levelindex + 1; level++) {
+        prefs.remove('LevelRating$level');
+      }
+    }
+    {
+      await prefs.setInt('LevelRating$levelindex', rating);
+    }
+  }
 }

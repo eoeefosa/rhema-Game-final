@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/audio/audio_controller.dart';
 import 'package:rhemabiblequiz/src/audio/sounds.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
+import 'package:rhemabiblequiz/src/commons/appBar.dart';
 import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
-import 'package:rhemabiblequiz/src/style/responsive_screen.dart';
 
 import 'components/level_card.dart';
 
@@ -53,92 +53,79 @@ class LevelSelectionScreen extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.center,
-              child: Container(
-                height: size.height * .8,
-                width: size.width * .8,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: const Color.fromRGBO(149, 125, 103, 1),
+              child: Column(
+                children: [
+                  gap,
+                  AppBarWidget(
+                    width: size.width * .8,
                   ),
-                  borderRadius: BorderRadius.circular(8),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/boob.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                child: Column(
-                  children: [
-                    ElevatedButton(
-                      child: const Text('Back'),
-                      onPressed: () {
-                        GoRouter.of(context).pop();
-                      },
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Center(
-                        child: Text(
-                          'Select level',
-                          style: TextStyle(
-                            fontFamily: AppConstants.fontfamilypermenent,
-                            fontSize: 30,
-                          ),
-                        ),
+                  gap,
+                  Container(
+                    height: size.height * .8,
+                    width: size.width * .8,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: const Color.fromRGBO(149, 125, 103, 1),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/boob.png'),
+                        fit: BoxFit.fill,
                       ),
                     ),
-                    const SizedBox(height: 50),
-                    Expanded(
-                        child: ListView(children: [
-                      GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2),
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 11,
-                          itemBuilder: (BuildContext context, index) {
-                            return LevelCard(
-                              level: index + 1,
-                              stars: questions.ratings[index],
-                              isOpen:
-                                  index <= playerProgress.highestLevelReached,
-                              onpressed: () {
-                                questions.chooseLevel(index);
-                                final audioController =
-                                    context.read<AudioController>();
-                                audioController.playSfx(SfxType.buttonTap);
-                                GoRouter.of(context).go('/play/quiz_game',
-                                    extra: {'level': (index)});
-                              },
-                            );
-                          }),
-                      // for (final level in gamelevels)
-                      //   ListTile(
-                      //     enabled:
-                      //         playerProgress.highestLevelReached >= level.number - 1,
-                      //     onTap: () {
-                      //       final audioController = context.read<AudioController>();
-                      //       audioController.playSfx(SfxType.buttonTap);
-                      //       GoRouter.of(context).go('/play/session/${level.number}');
-                      //     },
-                      //     // TODO: ADD TEXT STYLE
-                      //     leading: Text(level.number.toString()),
-                      //     title: Text('Level #${level.number}'),
-                      //   ),
-                      ListTile(
-                        onTap: () {
-                          final audioController =
-                              context.read<AudioController>();
-                          audioController.playSfx(SfxType.buttonTap);
-                          GoRouter.of(context).go('/play/quiz_game');
-                        },
-                        title: const Text('Quiz game'),
-                      )
-                    ])),
-                  ],
-                ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    child: Column(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Center(
+                            child: Text(
+                              'Select level',
+                              style: TextStyle(
+                                fontFamily: AppConstants.fontfamilypermenent,
+                                fontSize: 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 50),
+                        Expanded(
+                          child: ListView(
+                            children: [
+                              GridView.builder(
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2),
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: 11,
+                                  itemBuilder: (BuildContext context, index) {
+                                    return LevelCard(
+                                      level: index + 1,
+                                      stars: questions.ratings[index],
+                                      isOpen: index <=
+                                          playerProgress.highestLevelReached,
+                                      onpressed: () {
+                                        questions.chooseLevel(index);
+                                        final audioController =
+                                            context.read<AudioController>();
+                                        audioController
+                                            .playSfx(SfxType.buttonTap);
+                                        GoRouter.of(context).go(
+                                            '/play/quiz_game',
+                                            extra: {'level': (index)});
+                                      },
+                                    );
+                                  }),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

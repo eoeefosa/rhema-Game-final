@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/constants.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/widgets/level_card.dart';
+import 'package:rhemabiblequiz/src/player_progress/gamepoints._widget.dart';
 
 class Titlebar extends StatefulWidget {
   const Titlebar({
@@ -51,10 +52,7 @@ class _TitlebarState extends State<Titlebar> {
           strokeCap: StrokeCap.round,
         ),
         const Spacer(),
-        ElevatedButton.icon(
-            onPressed: () {},
-            icon: diamond(size: 20),
-            label: const Text("1000")),
+        const GamePoint(),
         // Row(
         //   children: List.generate(
         //     3,

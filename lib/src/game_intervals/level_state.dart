@@ -5,20 +5,13 @@ import 'package:flutter/material.dart';
 /// Tracks only a single variable, [progress], and calls [onWin] when
 /// the value of [progress] reaches [goal].
 class LevelState extends ChangeNotifier {
-  LevelState({required this.onWin, this.goal = 100});
-
   final VoidCallback onWin;
-  final int goal;
+  final bool questionisFinish;
 
-  int _progress = 0;
-  int get progress => _progress;
-  void setProgress(int value) {
-    _progress = value;
-    notifyListeners();
-  }
+  LevelState({required this.onWin, this.questionisFinish = false});
 
   void evaluate() {
-    if (_progress >= goal) {
+    if (questionisFinish) {
       onWin();
     }
   }

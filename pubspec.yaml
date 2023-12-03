@@ -16,6 +16,7 @@ dependencies:
   audioplayers: ^5.2.0
   games_services: ^4.0.0
   animated_text_kit: ^4.2.2
+  collection: ^1.17.2
   # just_audio: ^0.9.36
   # firebase_crashlytics: ^3.4.3
   # firebase_core: ^2.21.0

@@ -30,4 +30,28 @@ class MemoryOnlyPlayerProgressPersistence implements PlayerProgressPersistence {
     await Future<void>.delayed(const Duration(milliseconds: 500));
     gamepoint = point;
   }
+  
+  @override
+  Future<int> getLevelRating(int level) {
+    // TODO: implement getLevelRating
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<int> getStars() {
+    // TODO: implement getStars
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> saveRating({int? rating, int? levelindex, bool? resetRatings}) {
+    // TODO: implement saveRating
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> saveStars(int totalStar) {
+    // TODO: implement saveStars
+    throw UnimplementedError();
+  }
 }

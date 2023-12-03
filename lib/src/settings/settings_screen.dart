@@ -70,7 +70,7 @@ class SettingsScreen extends StatelessWidget {
           _gap,
           ElevatedButton(
             onPressed: () {
-              GoRouter.of(context).pop();
+              context.pop();
             },
             child: const Text("Back"),
           )

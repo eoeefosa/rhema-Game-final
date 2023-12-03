@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,14 +23,16 @@ class Questions extends ChangeNotifier {
   int? currentLevel;
   int currentQuestionIndex = 0;
   int? currentQuestionAnswerIndex;
-  int rightAnswers = 0;
+  int _rightAnswers = 0;
   bool isFinish = false;
   int? currentScore;
 
+  int get rightAnswers => _rightAnswers;
   Timer? timer;
   int seconds = 60;
   Question get currentQuestion =>
       questions[currentLevel! * 4 + currentQuestionIndex];
+      // TODO: CHANGE THE LEVELS IN THIS RATING
   List<int> ratings = List.generate(11, (index) => 0);
 
   Timer? questionTimer;
@@ -74,8 +77,9 @@ class Questions extends ChangeNotifier {
     currentLevel = level;
     // TODO: MIGHT REMOVE THIS
     currentQuestionIndex = 0;
+    currentQuestionAnswerIndex = null;
     isFinish = false;
-    
+
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (seconds == 0) {
         timer.cancel();
@@ -87,14 +91,15 @@ class Questions extends ChangeNotifier {
   }
 
   void updateCurrentLevelRating() {
+    int prevRating = ratings[currentLevel!];
     // 2/4 scored
-    if (rightAnswers <= 2) {
-      ratings[currentLevel!] = 1;
+    if (_rightAnswers <= 2) {
+      ratings[currentLevel!] = max(1, prevRating);
     } //3/4 scored
-    else if (rightAnswers <= 3) {
-      ratings[currentLevel!] = 2;
-    } else if (rightAnswers == 4) {
-      ratings[currentLevel!] = 3;
+    else if (_rightAnswers <= 3) {
+      ratings[currentLevel!] = max(2, prevRating);
+    } else if (_rightAnswers == 4) {
+      ratings[currentLevel!] = max(3, prevRating);
     }
   }
 
@@ -104,7 +109,7 @@ class Questions extends ChangeNotifier {
     timer = null;
     currentLevel = null;
     currentQuestionAnswerIndex = 0;
-    rightAnswers = 0;
+    _rightAnswers = 0;
     isFinish = false;
     currentQuestionAnswerIndex = null;
     notifyListeners();
@@ -114,13 +119,13 @@ class Questions extends ChangeNotifier {
     currentQuestionAnswerIndex = index;
     notifyListeners();
     if (currentQuestion.answer == currentQuestion.options[index]) {
-      rightAnswers++;
+      _rightAnswers++;
     }
   }
 
   void nextQuestion() {
     if (currentQuestionIndex == 3) {
-      currentScore = rightAnswers * (60 - seconds);
+      currentScore = _rightAnswers * (60 - seconds);
       seconds = 60;
       timer!.cancel();
       timer = null;

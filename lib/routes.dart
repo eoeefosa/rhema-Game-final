@@ -5,7 +5,6 @@ import 'package:rhemabiblequiz/src/games_services/score.dart';
 import 'package:rhemabiblequiz/src/level_selection/game_levels.dart';
 import 'package:rhemabiblequiz/src/level_selection/level_selection_screen.dart';
 import 'package:rhemabiblequiz/src/main_menu/main_menu_screen.dart';
-import 'package:rhemabiblequiz/src/play_session/play_session_screen.dart';
 import 'package:rhemabiblequiz/src/settings/settings_screen.dart';
 import 'package:rhemabiblequiz/src/style/my_transition.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
@@ -32,23 +31,6 @@ class AppRoutes {
                     ),
                 routes: [
                   GoRoute(
-                    path: 'session/:level',
-                    pageBuilder: (context, state) {
-                      final levelNumber =
-                          int.parse(state.pathParameters['level']!);
-                      final level = gamelevels.singleWhere(
-                          (gamelevel) => gamelevel.number == levelNumber);
-                      // TODO REPLACE WITH PLAYSESSION
-                      return buildMyTransition(
-                        child: PlaySessionScreen(
-                          level: level,
-                          key: const Key('play sesion'),
-                        ),
-                        color: context.watch<Palette>().backgroundPlaySession,
-                      );
-                    },
-                  ),
-                   GoRoute(
                       path: 'quiz_game',
                       pageBuilder: (context, state) => buildMyTransition(
                             child: const QuizScreen(),
@@ -68,7 +50,6 @@ class AppRoutes {
                           color: context.watch<Palette>().backgroundPlaySession,
                         );
                       }),
-                 
                   GoRoute(
                       path: 'won',
                       pageBuilder: (context, state) {
