@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
+import '../../level_selection/level_selection_screen.dart';
+
 const Color widgetcolor = Color.fromARGB(255, 134, 73, 3);
 const Color contextColor = Colors.white;
 const OutlinedBorder shape = CircleBorder();
@@ -50,12 +52,21 @@ class ButtomOptions extends StatelessWidget {
                                 child: Text("continue"),
                               ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
+                                  TextButton(
+                                      onPressed: () {
+                                        // Navigator.of(context).pop();
+                                        GoRouter.of(context)
+                                            .go(LevelSelectionScreen.route);
+                                      },
+                                      child: const Text("Quit Game")),
                                   TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: const Text("Quit"))
+                                      child: const Text("Continue Game")),
                                 ],
                               )
                             ],
@@ -116,18 +127,6 @@ class ButtomOptions extends StatelessWidget {
             ],
           ),
 
-          // CustomGameIcon(
-          //   onPressed: () {
-          //     // TODO: FIX QUIT
-
-          //     Navigator.of(context).pop();
-          //   },
-          //   buttomtext: const Text(
-          //     "x2",
-          //     style: TextStyle(color: contextColor),
-          //   ),
-          //   icon:
-          // ),
           const Spacer(),
 
           /// hint

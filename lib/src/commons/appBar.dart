@@ -32,6 +32,9 @@ class AppBarWidget extends StatelessWidget {
               ]
             : [
                 ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      elevation: 8.0,
+                      backgroundColor: const Color.fromRGBO(227, 210, 182, 1)),
                   onPressed: () {
                     context.pop();
                   },

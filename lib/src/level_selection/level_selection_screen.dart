@@ -92,19 +92,6 @@ class LevelSelectionScreen extends StatelessWidget {
                                       }
                                     : null,
                                 child: Text(levelbook.previousTitle)),
-                            Padding(
-                              padding: const EdgeInsets.all(16),
-                              child: Center(
-                                child: Text(
-                                  levelbook.currentTitle,
-                                  style: const TextStyle(
-                                    fontFamily:
-                                        AppConstants.fontfamilypermenent,
-                                    fontSize: 30,
-                                  ),
-                                ),
-                              ),
-                            ),
                             TextButton(
                                 onPressed: levelbook.thereIsnextBook
                                     ? () {
@@ -113,6 +100,20 @@ class LevelSelectionScreen extends StatelessWidget {
                                     : null,
                                 child: Text(levelbook.nextTitle)),
                           ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                          ),
+                          child: Center(
+                            child: Text(
+                              levelbook.currentTitle,
+                              style: const TextStyle(
+                                fontFamily: AppConstants.fontfamilypermenent,
+                                fontSize: 30,
+                              ),
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 50),
                         Expanded(

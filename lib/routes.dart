@@ -34,8 +34,9 @@ class AppRoutes {
                       path: 'quiz_game',
                       pageBuilder: (context, state) => buildMyTransition(
                             child: const QuizScreen(),
-                            color:
-                                context.watch<Palette>().backgroundPlaySession,
+                            color: context
+                                .watch<Palette>()
+                                .backgroundLevelSelection,
                           )),
                   GoRoute(
                       path: 'won_quiz',

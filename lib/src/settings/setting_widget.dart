@@ -18,8 +18,14 @@ class SettingsWidget extends StatelessWidget {
         audioController.playSfx(SfxType.buttonTap);
         GoRouter.of(context).push(SettingsScreen.route);
       },
+      style: ElevatedButton.styleFrom(
+        // fixedSize: ,
+          elevation: 8.0,
+          backgroundColor: const Color.fromRGBO(227, 210, 182, 1)),
       icon: const Icon(Icons.settings),
-      label: const Text("Setting"),
+      label: const Text(
+        "Setting",
+      ),
     );
   }
 }

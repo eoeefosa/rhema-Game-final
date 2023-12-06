@@ -67,16 +67,7 @@ class _ScoreScreenState extends State<ScoreScreen>
               },
             ),
             gap,
-            // Animated trophy or star icon to celebrate the score
-            // AnimatedContainer(
-            //   duration: Duration(milliseconds: (durationtime * 1.5).toInt()),
-            //   curve: Curves.easeInOut,
-            //   height: 120.0,
-            //   width: 120.0,
-            //   child: diamond(size: 30),
-            // ),
-            // gap,
-            // Display the score with a fun font and animation
+          
             TweenAnimationBuilder(
               tween: Tween(begin: 0.0, end: questions.currentScore!.toDouble()),
               duration: Duration(milliseconds: (durationtime * .75).toInt()),
