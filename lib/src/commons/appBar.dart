@@ -11,9 +11,11 @@ class AppBarWidget extends StatelessWidget {
     Key? key,
     required this.width,
     this.heigth,
+    this.mainscreen = false,
   }) : super(key: key);
   final double width;
   final double? heigth;
+  final bool mainscreen;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +24,25 @@ class AppBarWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ElevatedButton.icon(
-            onPressed: () {
-              context.pop();
-            },
-            icon: const Icon(Icons.arrow_back_ios),
-            label: const Text("Back"),
-          ),
-          const Spacer(),
-          const GamePoint(),
-          const Spacer(),
-          const SettingsWidget(),
-        ],
+        children: mainscreen
+            ? [
+                const SettingsWidget(),
+                const Spacer(),
+                const GamePoint(),
+              ]
+            : [
+                ElevatedButton.icon(
+                  onPressed: () {
+                    context.pop();
+                  },
+                  icon: const Icon(Icons.arrow_back_ios),
+                  label: const Text("Back"),
+                ),
+                const Spacer(),
+                const GamePoint(),
+                const Spacer(),
+                const SettingsWidget(),
+              ],
       ),
     );
   }

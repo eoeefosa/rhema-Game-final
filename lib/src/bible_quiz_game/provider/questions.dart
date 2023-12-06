@@ -32,11 +32,15 @@ class Questions extends ChangeNotifier {
   int get rightAnswers => _rightAnswers;
   Timer? timer;
   int seconds = 60;
+
+  VoidCallback? _onWin;
+
   Question get currentQuestion =>
       questions[currentLevel! * 4 + currentQuestionIndex];
   // TODO: CHANGE THE LEVELS IN THIS
   List<int> ratings = List.generate(11, (index) => 0);
 
+  int get maxlevel => questions.last.level;
   Timer? questionTimer;
 
   List<Question> questions =
@@ -73,6 +77,48 @@ class Questions extends ChangeNotifier {
   void changeRating(int rating, int level) {
     ratings[level] = rating;
     notifyListeners();
+  }
+
+  void attachCallBackFunction(VoidCallback onWin) {
+    _onWin = onWin;
+  }
+
+  void rePlayLevel() {
+    if (currentLevel != null) {
+      currentQuestionIndex = 0;
+      currentQuestionAnswerIndex = null;
+      _isFinish = false;
+
+      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (seconds == 0) {
+          timer.cancel();
+        } else {
+          seconds--;
+        }
+        notifyListeners();
+      });
+    }
+  }
+
+  void nextLevel() {
+    final oldlevel = currentLevel;
+    if (currentLevel != null) {
+      if (oldlevel! < maxlevel) {
+        currentLevel = oldlevel + 1;
+      }
+      currentQuestionIndex = 0;
+      currentQuestionAnswerIndex = null;
+      _isFinish = false;
+
+      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (seconds == 0) {
+          timer.cancel();
+        } else {
+          seconds--;
+        }
+        notifyListeners();
+      });
+    }
   }
 
   void chooseLevel(int level) {
@@ -129,6 +175,11 @@ class Questions extends ChangeNotifier {
     if (currentQuestionIndex == 3) {
       // TODO : I CANT REMEMBER WHY IT WAS DOWN
       _isFinish = true;
+      // _onWin;
+      print(_onWin);
+      if (_onWin != null) {
+        _onWin!();
+      }
 
       print('Questions provider: _isFinish ran value of _isFinish=$_isFinish');
       currentScore = _rightAnswers * (60 - seconds);

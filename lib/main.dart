@@ -10,6 +10,7 @@ import 'package:rhemabiblequiz/src/app_lifecycle/app_lifecycle.dart';
 import 'package:rhemabiblequiz/src/audio/audio_controller.dart';
 import 'package:rhemabiblequiz/src/games_services/game_services_controller.dart';
 import 'package:rhemabiblequiz/src/games_services/persistence/sharepref_impl.dart';
+import 'package:rhemabiblequiz/src/level_selection/provider/levelbook.dart';
 import 'package:rhemabiblequiz/src/player_progress/persistence/local_storage_persistence.dart';
 import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 // import 'package:rhemabiblequiz/src/carashlytics/crashlytics.dart';
@@ -80,7 +81,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<Questions>(
             create: (context) => Questions(),
           ),
-
+          ChangeNotifierProvider<LevelBook>(
+            create: (context) => LevelBook(),
+          ),
           // check  buttom for differences btw ChangeNotifierProvider and Provider
           ChangeNotifierProvider(create: (context) {
             var progress = PlayerProgress(playerProgressPersistence);
