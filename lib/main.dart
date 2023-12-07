@@ -17,6 +17,7 @@ import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 import 'package:rhemabiblequiz/src/settings/persistence/local_storage_settings_persistences.dart';
 import 'package:rhemabiblequiz/src/settings/persistence/settings_persistence.dart';
 import 'package:rhemabiblequiz/src/settings/settings.dart';
+import 'package:rhemabiblequiz/src/store/provider/store_controller.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 import 'package:rhemabiblequiz/src/style/snack_bar.dart';
 
@@ -103,6 +104,11 @@ class MyApp extends StatelessWidget {
                 SettingsController(persistence: settingsPersistence)
                   ..loadStateFromPersistence(),
           ),
+          ProxyProvider<StoreProvider, Questions>(
+              update: (context, storeprovider, questions) {
+            questions!.attachStore(storeprovider);
+            return questions;
+          }),
           ProxyProvider2<SettingsController, ValueNotifier<AppLifecycleState>,
               AudioController>(
             lazy: false,
@@ -133,6 +139,7 @@ class MyApp extends StatelessWidget {
               ),
               useMaterial3: true,
             ),
+            debugShowCheckedModeBanner: false,
             // This fix the go router error i had
             routerConfig: AppRoutes.routes,
             scaffoldMessengerKey: scaffoldMessengerKey,
@@ -150,6 +157,7 @@ class MyApp extends StatelessWidget {
 // package to manage the state of different parts of the application.
 
 // ### Provider vs. ChangeNotifierProvider:
+
 
 // 1. **Provider:**
 //    - The generic `Provider` is a general-purpose provider that 

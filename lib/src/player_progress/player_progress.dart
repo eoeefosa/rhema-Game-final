@@ -3,6 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
+import 'package:rhemabiblequiz/src/level_selection/provider/levelbook.dart';
 import 'package:rhemabiblequiz/src/player_progress/persistence/player_progress.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 
@@ -14,6 +15,12 @@ class PlayerProgress extends ChangeNotifier {
   int _totalstars = 0;
   int totalLevel = Questions().questions.last.level;
   List<int> _ratings = generateRatings(11);
+  List<int> _ratingsget(String book) {
+    if (book == LevelBook.leveltitles[0]) {
+      return _ratings;
+    }
+    return generateRatings(11);
+  }
 
   static List<int> generateRatings(int number) {
     return List.generate(number, (index) => 0);
@@ -21,6 +28,10 @@ class PlayerProgress extends ChangeNotifier {
 
   int get totalstars => _totalstars;
   List<int> get ratings => _ratings;
+  List<int> ratingsperBook(String book) {
+    return _ratingsget(book);
+  }
+
   int get maxstarRequired => totalLevel * 3;
 
   void addStar({required int level, required int star}) {

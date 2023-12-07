@@ -7,6 +7,7 @@ class Palette {
   Color get inkFullOpacity => const Color(0xff352b42);
   Color get ink => const Color(0xee352b42);
   Color get backgroundMain => const Color(0xffffffd1);
+  Color get artipapercolor => const Color.fromRGBO(227, 210, 182, 1);
   // Color get backgroundMain => Colors.grey.shade900;
 
   // Color get backgroundLevelSelection => const Color(0xffa2dcc7);

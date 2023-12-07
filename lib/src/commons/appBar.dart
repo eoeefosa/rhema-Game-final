@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:rhemabiblequiz/src/settings/setting_widget.dart';
 
-import '../player_progress/gamepoints._widget.dart';
+import '../player_progress/gamepoints_widget.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({
@@ -19,6 +19,7 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iconSize = width / 5;
     return SizedBox(
       width: width,
       child: Row(
@@ -31,20 +32,23 @@ class AppBarWidget extends StatelessWidget {
                 const GamePoint(),
               ]
             : [
-                ElevatedButton.icon(
+                ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                      fixedSize: Size.fromWidth(iconSize),
                       elevation: 8.0,
                       backgroundColor: const Color.fromRGBO(227, 210, 182, 1)),
                   onPressed: () {
                     context.pop();
                   },
-                  icon: const Icon(Icons.arrow_back_ios),
-                  label: const Text("Back"),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: iconSize * .3,
+                  ),
                 ),
                 const Spacer(),
                 const GamePoint(),
                 const Spacer(),
-                const SettingsWidget(),
+                SettingsWidget(width: iconSize),
               ],
       ),
     );

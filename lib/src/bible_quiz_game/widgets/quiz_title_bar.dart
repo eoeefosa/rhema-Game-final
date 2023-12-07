@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/constants.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/widgets/level_card.dart';
-import 'package:rhemabiblequiz/src/player_progress/gamepoints._widget.dart';
+import 'package:rhemabiblequiz/src/player_progress/gamepoints_widget.dart';
 
 class Titlebar extends StatefulWidget {
   const Titlebar({

@@ -66,9 +66,10 @@ class SettingsScreen extends StatelessWidget {
                   context.read<PlayerProgress>().reset();
                   final messegenger = ScaffoldMessenger.of(context);
                   messegenger.showSnackBar(
-                    const SnackBar(
+                    SnackBar(
                         backgroundColor: Colors.red,
-                        content: Text("Player progress has been reset.")),
+                        content: Text(
+                            "${settings.playerName.value[0].toUpperCase()}${settings.playerName.value.toLowerCase()} yours progress has been reset.")),
                   );
                 },
               ),
@@ -116,7 +117,7 @@ class _NameChangeLine extends StatelessWidget {
 class _SettingsLine extends StatelessWidget {
   final String title;
   final Widget icon;
-  final VoidCallback? onSelected;
+  final void Function()? onSelected;
   // ignore: unused_element
   const _SettingsLine(this.title, this.icon, {this.onSelected});
 

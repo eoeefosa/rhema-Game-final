@@ -127,11 +127,16 @@ class LevelSelectionScreen extends StatelessWidget {
                                   physics: const NeverScrollableScrollPhysics(),
                                   itemCount: 11,
                                   itemBuilder: (BuildContext context, index) {
+                                    // final playerprogress = context.watch<PlayerProgress>();
                                     return LevelCard(
-                                      level: index + 1,
-                                      stars: questions.ratings[index],
-                                      isOpen: index <=
-                                          playerProgress.highestLevelReached,
+                                      level: (index + 1) +
+                                          (levelbook.currentbook * 11),
+                                      stars: playerProgress.ratingsperBook(
+                                          levelbook.currentTitle)[index],
+                                      isOpen: (index + 1) +
+                                              (levelbook.currentbook * 11) <=
+                                          playerProgress.highestLevelReached +
+                                              1,
                                       onpressed: () {
                                         questions.chooseLevel(index);
                                         final audioController =

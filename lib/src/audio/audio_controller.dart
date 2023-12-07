@@ -34,6 +34,25 @@ class AudioController {
     _musicPlayer.play(AssetSource(_playlist.first.filename));
   }
 
+  int volume = 1;
+  void setvolume(int volume) {
+    _musicPlayer.setVolume(volume / 100);
+  }
+
+  void increaseVolume() {
+    if (volume < 10) {
+      volume++;
+      setvolume(volume);
+    }
+  }
+
+  void reduceVolume() {
+    if (volume > 0) {
+      volume--;
+      setvolume(volume);
+    }
+  }
+
   String get songtitle => '${_playlist.first.artist!} ${_playlist.first.name}';
   AudioPlayer _musicPlayer;
   final List<AudioPlayer> _sfxPlayers;

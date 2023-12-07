@@ -4,17 +4,14 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/commons/appBar.dart';
 import 'package:rhemabiblequiz/src/main_menu/main_menu_screen.dart';
-import 'package:rhemabiblequiz/src/settings/settings_screen.dart';
 
 import '../audio/audio_controller.dart';
 import '../audio/sounds.dart';
-import '../bible_quiz_game/constants.dart';
 import '../bible_quiz_game/provider/questions.dart';
 import '../player_progress/player_progress.dart';
 
 class ScoreScreen extends StatefulWidget {
-  const ScoreScreen({super.key, required this.score});
-  final int score;
+  const ScoreScreen({super.key});
 
   @override
   State<ScoreScreen> createState() => _ScoreScreenState();
@@ -54,22 +51,27 @@ class _ScoreScreenState extends State<ScoreScreen>
               width: size.width * .8,
               mainscreen: true,
             ),
-            Lottie.asset(
-              'assets/animation/lmcn1iz9.json',
-              repeat: false,
-              controller: _controller,
-              onLoaded: (composition) {
-                // Configure the AnimationController with the duration of the
-                // Lottie file and start the animation.
-                _controller
-                  ..duration = Duration(milliseconds: durationtime)
-                  ..forward();
-              },
+            SizedBox(
+              height: size.height * .5,
+              child: Lottie.asset(
+                questions.rightAnswers < 2
+                    ? 'assets/animation/animation_lme1emfg.json'
+                    : 'assets/animation/lmcn1iz9.json',
+                repeat: false,
+                controller: _controller,
+                onLoaded: (composition) {
+                  // Configure the AnimationController with the duration of the
+                  // Lottie file and start the animation.
+                  _controller
+                    ..duration = Duration(milliseconds: durationtime)
+                    ..forward();
+                },
+              ),
             ),
             gap,
-          
+
             TweenAnimationBuilder(
-              tween: Tween(begin: 0.0, end: questions.currentScore!.toDouble()),
+              tween: Tween(begin: 0.0, end: questions.currentScore.toDouble()),
               duration: Duration(milliseconds: (durationtime * .75).toInt()),
               builder: (_, double value, child) {
                 return Text(
@@ -87,9 +89,10 @@ class _ScoreScreenState extends State<ScoreScreen>
             gap,
 
             // A playful message to encourage and praise the child
-            const Text(
-              'Great Job!',
-              style: TextStyle(
+            // TODO LIST OF RANDOM MESSAGES
+            Text(
+              questions.rightAnswers < 2 ? 'Try Again' : 'Great Job!',
+              style: const TextStyle(
                 fontSize: 24.0,
                 fontFamily: 'Comic Sans MS',
                 color: Colors.blue, // Choose a fun color
@@ -134,17 +137,28 @@ class _ScoreScreenState extends State<ScoreScreen>
                 ],
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                final audioController = context.read<AudioController>();
-                audioController.playSfx(SfxType.buttonTap);
-                GoRouter.of(context).go(
-                  MainMenuScreen.route,
-                );
-                // Navigate back to the quiz or main menu
-                // Navigator.push(context, MaterialPageRoute(builder: (context) => YourQuizScreen()));
-              },
-              child: const Text('Main Menu'),
+            gap,
+            gap,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        final audioController = context.read<AudioController>();
+                        audioController.playSfx(SfxType.buttonTap);
+                        GoRouter.of(context).go(
+                          MainMenuScreen.route,
+                        );
+                        // Navigate back to the quiz or main menu
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => YourQuizScreen()));
+                      },
+                      child: const Text('Main Menu'),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

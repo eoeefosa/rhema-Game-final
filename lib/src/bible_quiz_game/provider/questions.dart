@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/data/question_data.dart';
+import 'package:rhemabiblequiz/src/store/provider/store_controller.dart';
 
 import '../model/question_model.dart';
 
@@ -19,13 +20,26 @@ final ChangeNotifierProvider<Questions> questionsProvider =
 
 class Questions extends ChangeNotifier {
   Questions();
+  StoreProvider? _storeProvider;
+  // REWARD
+  void attachStore(StoreProvider? storeProvider) {
+    if (_storeProvider == storeProvider) {
+      return;
+    }
+    final oldStoreProvider = _storeProvider;
+    if (oldStoreProvider != null) {
+      // oldStoreProvider.addedtimer.removeListener()
+    }
+  }
+
   // TODO GameUser
   int? currentLevel;
   int currentQuestionIndex = 0;
   int? currentQuestionAnswerIndex;
   int _rightAnswers = 0;
   bool _isFinish = false;
-  int? currentScore;
+  int currentScore = 0;
+  int streak = 0;
 
   bool get isFinish => _isFinish;
 
@@ -152,7 +166,7 @@ class Questions extends ChangeNotifier {
   }
 
   void reset() {
-    currentScore = null;
+    currentScore = 0;
     seconds = 60;
     timer = null;
     currentLevel = null;
@@ -166,8 +180,14 @@ class Questions extends ChangeNotifier {
   void chooseAnswer(int index) {
     currentQuestionAnswerIndex = index;
     notifyListeners();
+  }
+
+  void checkAnswer(int index) {
     if (currentQuestion.answer == currentQuestion.options[index]) {
       _rightAnswers++;
+      streak++;
+    } else {
+      streak = 0;
     }
   }
 

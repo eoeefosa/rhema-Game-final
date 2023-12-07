@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/constants.dart';
+import 'package:rhemabiblequiz/src/settings/settings.dart';
+import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../../level_selection/level_selection_screen.dart';
@@ -21,6 +23,7 @@ class ButtomOptions extends StatelessWidget {
     final iconSize = (widgetsize - iconPadding) * 0.8;
     final gap = SizedBox(width: width / 100);
     final pallette = context.watch<Palette>();
+    final settings = context.watch<SettingsController>();
 
     return SizedBox(
       width: width,
@@ -43,30 +46,98 @@ class ButtomOptions extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (_) => SimpleDialog(
-                            title: const Text('Dialog Title'),
-                            children: [
-                              const SimpleDialogOption(
-                                child: Text("continue"),
+                            // contentPadding: const EdgeInsets.symmetric(
+                            // horizontal: 30, vertical: 50),
+                            title: ElevatedButton(
+                              onPressed: null,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: pallette.artipapercolor,
+                                foregroundColor: pallette.artipapercolor,
+                                surfaceTintColor: pallette.artipapercolor,
+                                disabledBackgroundColor:
+                                    pallette.artipapercolor,
+                                disabledForegroundColor:
+                                    pallette.artipapercolor,
                               ),
-                              const SimpleDialogOption(
-                                child: Text("continue"),
+                              child: Text('GAME PAUSED',
+                                  style: TextStyle(
+                                    color: pallette.ink,
+                                    fontFamily:
+                                        AppConstants.fontfamilyLuckiestgut,
+                                    letterSpacing: 2,
+                                  )),
+                            ),
+                            surfaceTintColor: pallette.background4,
+                            backgroundColor: pallette.artipapercolor,
+                            children: [
+                              Column(
+                                children: [
+                                  ValueListenableBuilder<bool>(
+                                    valueListenable: settings.soundsOn,
+                                    builder: (context, soundOn, child) =>
+                                        _SettingsLine(
+                                      soundOn
+                                          ? 'Game Sound ON'
+                                          : 'Game Sound OFF',
+                                      Icon(soundOn
+                                          ? Icons.graphic_eq
+                                          : Icons.volume_off),
+                                      onSelected: () =>
+                                          settings.toggleSoundsOn(),
+                                    ),
+                                  ),
+                                  ValueListenableBuilder(
+                                    valueListenable: settings.musicOn,
+                                    builder: (context, musicOn, child) =>
+                                        _SettingsLine(
+                                      musicOn ? 'Music ON' : 'Music OFF',
+                                      Icon(musicOn
+                                          ? Icons.music_note
+                                          : Icons.music_off),
+                                      onSelected: () =>
+                                          settings.toggleMusicOn(),
+                                    ),
+                                  ),
+                                ],
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   TextButton(
                                       onPressed: () {
-                                        // Navigator.of(context).pop();
                                         GoRouter.of(context)
-                                            .go(LevelSelectionScreen.route);
+                                            .go('/play/score_screen');
+                                        Navigator.of(context).pop();
+
+                                        // GoRouter.of(context).go(, extra: {'score': score});
                                       },
-                                      child: const Text("Quit Game")),
+                                      child: Text("Quit Game",
+                                          style: TextStyle(
+                                            // fontWeight: FontWeight.w200,
+                                            color: pallette.redPen,
+                                            fontFamily: AppConstants
+                                                .fontfamilyLuckiestgut,
+                                            letterSpacing: 1,
+                                          ))),
+                                  // const Spacer(),
                                   TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: const Text("Continue Game")),
+                                      style: TextButton.styleFrom(
+                                        backgroundColor:
+                                            pallette.artipapercolor,
+                                        elevation: 8,
+                                      ),
+                                      child: Text("Continue Game",
+                                          style: TextStyle(
+                                            color: pallette.darkPen,
+                                            fontFamily: AppConstants
+                                                .fontfamilyLuckiestgut,
+                                            letterSpacing: 1,
+                                          ))),
                                 ],
                               )
                             ],
@@ -74,10 +145,7 @@ class ButtomOptions extends StatelessWidget {
                 },
               ),
               gap,
-              Text(
-                "",
-                style: TextStyle(color: pallette.pen),
-              ),
+              const Text(""),
             ],
           ),
           const Spacer(),
@@ -178,6 +246,39 @@ class ButtomOptions extends StatelessWidget {
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class _SettingsLine extends StatelessWidget {
+  final String title;
+  final Widget icon;
+  final void Function()? onSelected;
+  // ignore: unused_element
+  const _SettingsLine(this.title, this.icon, {this.onSelected});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+      child: InkResponse(
+        highlightShape: BoxShape.rectangle,
+        onTap: onSelected,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Row(children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontFamily: AppConstants.fontfamilyLuckiestgut,
+                letterSpacing: 2,
+              ),
+            ),
+            const Spacer(),
+            icon,
+          ]),
+        ),
       ),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:rhemabiblequiz/src/games_services/score.dart';
 import 'package:rhemabiblequiz/src/level_selection/level_selection_screen.dart';
 import 'package:rhemabiblequiz/src/main_menu/main_menu_screen.dart';
 import 'package:rhemabiblequiz/src/settings/settings_screen.dart';
@@ -54,12 +53,12 @@ class AppRoutes {
                   GoRoute(
                       path: 'score_screen',
                       pageBuilder: (context, state) {
-                        final map = state.extra! as Map<String, dynamic>;
-                        final score = map['score'] as int;
+                        // final map = state.extra! as Map<String, dynamic>;
+                        // final score = map['score'] as int;
                         return buildMyTransition(
-                          child: ScoreScreen(
-                            score: score,
-                            key: const Key('score screen'),
+                          child: const ScoreScreen(
+                            // score: score,
+                            key: Key('score screen'),
                           ),
                           color: context.watch<Palette>().backgroundPlaySession,
                         );
