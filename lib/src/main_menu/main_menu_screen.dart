@@ -1,126 +1,141 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:rhemabiblequiz/src/commons/appBar.dart';
+import 'package:rhemabiblequiz/src/style/palette.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rhemabiblequiz/src/audio/audio_controller.dart';
-import 'package:rhemabiblequiz/src/audio/sounds.dart';
-import 'package:rhemabiblequiz/src/games_services/game_services_controller.dart';
-import 'package:rhemabiblequiz/src/level_selection/level_selection_screen.dart';
-import 'package:rhemabiblequiz/src/main_menu/list_card.dart';
-import 'package:rhemabiblequiz/src/settings/settings.dart';
-import 'package:rhemabiblequiz/src/settings/settings_screen.dart';
-import 'package:rhemabiblequiz/src/style/constants.dart';
-import 'package:rhemabiblequiz/src/style/palette.dart';
-import 'package:rhemabiblequiz/src/style/responsive_screen.dart';
+import '../audio/audio_controller.dart';
+import '../audio/sounds.dart';
+import '../games_services/game_services_controller.dart';
+import '../level_selection/level_selection_screen.dart';
+import '../settings/settings.dart';
+import '../settings/settings_screen.dart';
+import '../style/constants.dart';
+import '../style/main_menu_background.dart';
+import 'list_card.dart';
+
+
 
 class MainMenuScreen extends StatelessWidget {
   const MainMenuScreen({super.key});
-
-  /// static const route = '/';
   static const route = '/';
   static const _gap = SizedBox(height: 10);
-
   @override
   Widget build(BuildContext context) {
-    final pallete = context.watch<Palette>();
+    final palete = context.watch<Palette>();
     // TODO: INITALISE gameservicecontroller
     final gameServiceController = context.watch<GameServicesController?>();
     final settingsController = context.watch<SettingsController>();
     final audioController = context.watch<AudioController>();
+    final size = MediaQuery.of(context).size;
+    const gap = SizedBox(height: 16);
     return Scaffold(
-      backgroundColor: pallete.backgroundMain,
-      body: ResponsiveScreen(
-        mainAreaProminence: 0.45,
-        squarishMainArea: Center(
-          child: Transform.rotate(
-            angle: -0.1,
-            child: DefaultTextStyle(
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 55,
-                height: 1,
-                fontFamily: AppConstants.fontfamilypermenent,
-                fontWeight: FontWeight.bold, // Make the text bold
-                color: Colors.black54,
-              ),
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  TyperAnimatedText('RHEMA BIBLE QUIZ',
-                      textAlign: TextAlign.center,
-                      speed: const Duration(milliseconds: 200)),
+      body: MainMenuBackground(
+        child: Column(
+          children: [
+            gap,
+            AppBarWidget(width: size.width * 0.8, mainscreen: true),
+            gap,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * .1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ValueListenableBuilder<bool>(
+                    valueListenable: settingsController.muted,
+                    builder: (context, muted, child) {
+                      return IconButton(
+                        onPressed: () => settingsController.toggleMuted(),
+                        icon: Icon(muted ? Icons.volume_off : Icons.volume_up),
+                      );
+                    },
+                  ),
+                  // _gap,
+                  // Text(audioController.songtitle),
                 ],
-                displayFullTextOnTap: true,
-                pause: const Duration(milliseconds: 3000),
-                isRepeatingAnimation: true,
-                repeatForever: true,
               ),
             ),
-          ),
-        ),
-        rectangularMenuArea: Column(
-          children: [
-            LIstcard(
-                text: "Play Now",
-                onTap: () {
-                  audioController.playSfx(SfxType.buttonTap);
-                  GoRouter.of(context).go(LevelSelectionScreen.route);
-                }),
-            // TODO: ACHIEVEMNETS,AND LEADERBOARD
-            if (gameServiceController != null) ...[
-              _hideUntilReady(
-                ready: gameServiceController.signedIn,
+
+            const SizedBox(
+              width: double.infinity,
+              height: 150,
+              child: Column(
+                children: [
+                  Text(
+                    'RHEMA',
+                    style: TextStyle(
+                      fontSize: 55,
+                      fontFamily: AppConstants.fontfamilypermenent,
+                      // color: palete.trueWhite,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    'BIBLE QUIZ',
+                    style: TextStyle(
+                      // color: palete.trueWhite,
+                      fontSize: 22,
+                      fontFamily: AppConstants.fontfamilypermenent,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            
+            gap,
+            SafeArea(
+              top: false,
+              maintainBottomViewPadding: true,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    LIstcard(
+                        text: "Play Now",
+                        onTap: () {
+                          audioController.playSfx(SfxType.buttonTap);
+                          GoRouter.of(context).go(LevelSelectionScreen.route);
+                        }),
+                    // TODO: ACHIEVEMNETS,AND LEADERBOARD
+                    if (gameServiceController != null) ...[
+                      _hideUntilReady(
+                        ready: gameServiceController.signedIn,
+                        child: Column(
+                          children: [
+                            _gap,
+                            LIstcard(
+                                text: "Achievements",
+                                onTap: () {
+                                  gameServiceController.showAchievement();
+                                }),
+                            _gap
+                          ],
+                        ),
+                      ),
+                      _hideUntilReady(
+                        ready: gameServiceController.signedIn,
+                        child: LIstcard(
+                            text: "Leaderboard",
+                            onTap: () {
+                              gameServiceController.showLeaderboard();
+                            }),
+                      ),
+                    ],
                     _gap,
                     LIstcard(
-                        text: "Achievements",
+                        text: "Quit",
                         onTap: () {
-                          gameServiceController.showAchievement();
+                          audioController.playSfx(SfxType.buttonTap);
+                          GoRouter.of(context).go(SettingsScreen.route);
                         }),
-                    _gap
+
+                    _gap,
                   ],
                 ),
               ),
-              _hideUntilReady(
-                ready: gameServiceController.signedIn,
-                child: LIstcard(
-                    text: "Leaderboard",
-                    onTap: () {
-                      gameServiceController.showLeaderboard();
-                    }),
-              ),
-            ],
-            _gap,
-            LIstcard(
-                text: "Settings",
-                onTap: () {
-                  audioController.playSfx(SfxType.buttonTap);
-                  GoRouter.of(context).go(SettingsScreen.route);
-                }),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-              ),
-              child: const Text("hell"),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 32),
-              child: ValueListenableBuilder<bool>(
-                valueListenable: settingsController.muted,
-                builder: (context, muted, child) {
-                  return IconButton(
-                    onPressed: () => settingsController.toggleMuted(),
-                    icon: Icon(muted ? Icons.volume_off : Icons.volume_up),
-                  );
-                },
-              ),
-            ),
-            _gap,
-            Text(audioController.songtitle),
-            _gap,
           ],
         ),
       ),

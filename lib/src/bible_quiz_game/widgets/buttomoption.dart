@@ -1,124 +1,214 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/constants.dart';
+import 'package:rhemabiblequiz/src/style/palette.dart';
+
+import '../../level_selection/level_selection_screen.dart';
 
 const Color widgetcolor = Color.fromARGB(255, 134, 73, 3);
 const Color contextColor = Colors.white;
 const OutlinedBorder shape = CircleBorder();
 
 class ButtomOptions extends StatelessWidget {
-  const ButtomOptions({super.key});
+  const ButtomOptions({super.key, required this.width});
+  final double width;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        /// pause the game
-        ElevatedButton(
-          onPressed: () {
-            showDialog(
-                context: context,
-                builder: (_) => SimpleDialog(
-                      title: const Text('Dialog Title'),
-                      children: [
-                        const SimpleDialogOption(
-                          child: Text("continue"),
-                        ),
-                        const SimpleDialogOption(
-                          child: Text("continue"),
-                        ),
-                        Row(
-                          children: [
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text("Quit"))
-                          ],
-                        )
-                      ],
-                    ));
-          },
-          style: ElevatedButton.styleFrom(
-              surfaceTintColor: widgetcolor,
-              foregroundColor: widgetcolor,
-              backgroundColor: widgetcolor,
-              shape: shape),
-          child: const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Icon(
-              Icons.pause,
-              // size: 30,
-              color: contextColor,
-            ),
-          ),
-        ),
+    final iconPadding = width / 100;
+    final widgetsize = width / 10;
+    final iconSize = (widgetsize - iconPadding) * 0.8;
+    final gap = SizedBox(width: width / 100);
+    final pallette = context.watch<Palette>();
 
-        /// Add Time
-        CustomGameIcon(
-          onPressed: () {},
-          buttomtext: const Text(
-            "x2",
-            style: TextStyle(color: contextColor),
-          ),
-          icon: const Icon(
-            Icons.more_time,
-            color: contextColor,
-          ),
-        ),
-
-        /// Add clear wrong option
-        CustomGameIcon(
-          onPressed: () {
-            // TODO: FIX QUIT
-
-            Navigator.of(context).pop();
-          },
-          buttomtext: const Text(
-            "x2",
-            style: TextStyle(color: contextColor),
-          ),
-          icon: const Icon(
-            Icons.cleaning_services_rounded,
-            color: contextColor,
-          ),
-        ),
-
-        /// hint
-        CustomGameIcon(
-          onPressed: () {},
-          buttomtext: const Text(
-            "x2",
-            style: TextStyle(color: contextColor),
-          ),
-          icon: const RotatedBox(
-              quarterTurns: 2,
-              child: Icon(
-                Icons.wb_incandescent_rounded,
-                color: contextColor,
-              )),
-        ),
-
-        /// Watch ads
-        CustomGameIcon(
-          buttomtext: Row(
+    return SizedBox(
+      width: width,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          /// pause the game
+          Column(
             children: [
-              const Text(
-                "+50",
-                style: TextStyle(color: contextColor),
+              MyCustomElevatedButton(
+                widgetsize: widgetsize,
+                iconPadding: iconPadding,
+                child: Icon(
+                  Icons.pause,
+                  size: iconSize,
+                  color: contextColor,
+                ),
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (_) => SimpleDialog(
+                            title: const Text('Dialog Title'),
+                            children: [
+                              const SimpleDialogOption(
+                                child: Text("continue"),
+                              ),
+                              const SimpleDialogOption(
+                                child: Text("continue"),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TextButton(
+                                      onPressed: () {
+                                        // Navigator.of(context).pop();
+                                        GoRouter.of(context)
+                                            .go(LevelSelectionScreen.route);
+                                      },
+                                      child: const Text("Quit Game")),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text("Continue Game")),
+                                ],
+                              )
+                            ],
+                          ));
+                },
               ),
-              diamond(),
+              gap,
+              Text(
+                "",
+                style: TextStyle(color: pallette.pen),
+              ),
             ],
           ),
-          icon: const Icon(
-            Icons.video_collection,
-            color: contextColor,
+          const Spacer(),
+
+          /// Add Time
+          Column(
+            children: [
+              MyCustomElevatedButton(
+                widgetsize: widgetsize,
+                iconPadding: iconPadding,
+                child: Icon(
+                  Icons.more_time,
+                  color: contextColor,
+                  size: iconSize,
+                ),
+              ),
+              gap,
+              Text(
+                "x2",
+                style: TextStyle(color: pallette.pen),
+              ),
+            ],
           ),
-          onPressed: () {},
-        ),
-      ],
+          const Spacer(),
+
+          /// Add clear wrong option
+
+          Column(
+            children: [
+              MyCustomElevatedButton(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                widgetsize: widgetsize,
+                iconPadding: iconPadding,
+                child: Icon(
+                  Icons.cleaning_services_rounded,
+                  color: contextColor,
+                  size: iconSize,
+                ),
+              ),
+              gap,
+              Text(
+                "x2",
+                style: TextStyle(color: pallette.pen),
+              ),
+            ],
+          ),
+
+          const Spacer(),
+
+          /// hint
+          Column(
+            children: [
+              MyCustomElevatedButton(
+                widgetsize: widgetsize,
+                iconPadding: iconPadding,
+                child: RotatedBox(
+                    quarterTurns: 2,
+                    child: Icon(
+                      Icons.wb_incandescent_rounded,
+                      color: contextColor,
+                      size: iconSize,
+                    )),
+              ),
+              gap,
+              Text(
+                "x2",
+                style: TextStyle(color: pallette.pen),
+              ),
+            ],
+          ),
+
+          const Spacer(),
+
+          /// Watch ads
+          Column(
+            children: [
+              MyCustomElevatedButton(
+                widgetsize: widgetsize,
+                iconPadding: iconPadding,
+                child: Icon(
+                  Icons.video_collection,
+                  color: contextColor,
+                  size: iconSize,
+                ),
+              ),
+              gap,
+              Row(
+                children: [
+                  Text(
+                    "+50",
+                    style: TextStyle(color: pallette.pen),
+                  ),
+                  diamond(),
+                ],
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class MyCustomElevatedButton extends StatelessWidget {
+  const MyCustomElevatedButton({
+    super.key,
+    required this.widgetsize,
+    required this.iconPadding,
+    this.onTap,
+    required this.child,
+  });
+
+  final double widgetsize;
+  final double iconPadding;
+  final void Function()? onTap;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration:
+          const BoxDecoration(shape: BoxShape.circle, color: widgetcolor),
+      width: widgetsize,
+      height: widgetsize,
+      padding: EdgeInsets.all(iconPadding),
+      child: InkWell(
+        onTap: onTap,
+        child: child,
+      ),
     );
   }
 }

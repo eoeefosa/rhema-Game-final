@@ -17,6 +17,8 @@ dependencies:
   games_services: ^4.0.0
   animated_text_kit: ^4.2.2
   collection: ^1.17.2
+  lottie: ^2.7.0
+  animator: ^3.3.0
   # just_audio: ^0.9.36
   # firebase_crashlytics: ^3.4.3
   # firebase_core: ^2.21.0
@@ -32,6 +34,38 @@ flutter:
     - assets/music/
     - assets/sfx/
     - assets/images/boob.png
+    - shorebird.yaml
+    # reward animation
+    - assets/animation/lmcmpxt3.json
+    # blinking star small 2
+    - assets/animation/lmcmqh5q.json
+    # blinking star small
+    - assets/animation/lmcmqh5qy.json
+    # green blue and yellow ball animation juggling animation 2
+    - assets/animation/lmcmrpc6.json
+    # cup winner animation 2
+    - assets/animation/lmcn1iah.json
+    # cup winner animation
+    - assets/animation/lmcn1iz9.json
+    # red rotating circle animation
+    - assets/animation/lmcn2hgh.json
+    # angle celebration
+    - assets/animation/lmcn6bsp.json
+    # green blue and yellow ball animation juggling animation
+    - assets/animation/lmcn06lm.json
+    # good animation (green)
+    - assets/animation/lmcn6zkf.json
+    # celeberation animation
+    - assets/animation/lmcn9dni.json
+    # rotaing balls
+    - assets/animation/lmcn446j.json
+    # center celebration
+    - assets/animation/animation_lmcn9dni.json
+    # mobile cloud or horse racing
+    - assets/animation/animation_lme0ppva.json
+    # wrong answer
+    - assets/animation/animation_lme1emfg.json
+
   uses-material-design: true
   fonts:
     - family: Permanent Marker

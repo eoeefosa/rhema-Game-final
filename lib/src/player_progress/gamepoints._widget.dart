@@ -13,6 +13,9 @@ class GamePoint extends StatelessWidget {
 
     return ElevatedButton.icon(
       onPressed: () {},
+      style: ElevatedButton.styleFrom(
+          elevation: 8.0,
+          backgroundColor: const Color.fromRGBO(227, 210, 182, 1)),
       icon: diamond(size: 20),
       label: Text("${playerProgress.points}"),
     );

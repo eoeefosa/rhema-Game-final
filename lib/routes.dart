@@ -7,6 +7,7 @@ import 'package:rhemabiblequiz/src/main_menu/main_menu_screen.dart';
 import 'package:rhemabiblequiz/src/settings/settings_screen.dart';
 import 'package:rhemabiblequiz/src/style/my_transition.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
+import 'package:rhemabiblequiz/src/win_game/score_screen.dart';
 import 'package:rhemabiblequiz/src/win_game/win_game_screen.dart';
 
 import 'src/bible_quiz_game/view/quiz_screen.dart';
@@ -33,8 +34,9 @@ class AppRoutes {
                       path: 'quiz_game',
                       pageBuilder: (context, state) => buildMyTransition(
                             child: const QuizScreen(),
-                            color:
-                                context.watch<Palette>().backgroundPlaySession,
+                            color: context
+                                .watch<Palette>()
+                                .backgroundLevelSelection,
                           )),
                   GoRoute(
                       path: 'won_quiz',
@@ -50,14 +52,14 @@ class AppRoutes {
                         );
                       }),
                   GoRoute(
-                      path: 'won',
+                      path: 'score_screen',
                       pageBuilder: (context, state) {
                         final map = state.extra! as Map<String, dynamic>;
-                        final score = map['score'] as Score;
+                        final score = map['score'] as int;
                         return buildMyTransition(
-                          child: WinGameScreen(
+                          child: ScoreScreen(
                             score: score,
-                            key: const Key('win game'),
+                            key: const Key('score screen'),
                           ),
                           color: context.watch<Palette>().backgroundPlaySession,
                         );

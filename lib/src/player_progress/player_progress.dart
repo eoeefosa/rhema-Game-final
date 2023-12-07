@@ -115,7 +115,7 @@ class PlayerProgress extends ChangeNotifier {
 
   void updateLevel() {
     var requiredstar = sumofStart(_highestLevelReached);
-    if (_totalstars < requiredstar) {
+    if (_totalstars > requiredstar) {
       _highestLevelReached++;
       notifyListeners();
     }

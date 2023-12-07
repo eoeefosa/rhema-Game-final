@@ -37,6 +37,9 @@ class _TitlebarState extends State<Titlebar> {
         ),
         ElevatedButton.icon(
             onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                elevation: 8.0,
+                backgroundColor: const Color.fromRGBO(227, 210, 182, 1)),
             icon: const Icon(Icons.stars_sharp),
             label: Text(widget.leveldifficulty)),
         const Spacer(),

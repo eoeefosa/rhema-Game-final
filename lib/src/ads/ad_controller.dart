@@ -16,7 +16,7 @@ class AdsController {
   }
 
   void preloadAd() {
-    final adUnitId = defaultTargetPlatform == TargetPlatform ? '' : '';
+    final adUnitId = defaultTargetPlatform == TargetPlatform.android ? 'ca-app-pub-1107087522848284/1116316133' : '';
     _preloadedBannerAd =
         PreloadedBannerAd(size: AdSize.mediumRectangle, adUnitId: adUnitId);
     Future<void>.delayed(const Duration(seconds: 1))

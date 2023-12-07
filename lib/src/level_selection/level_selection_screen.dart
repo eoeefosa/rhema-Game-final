@@ -5,6 +5,7 @@ import 'package:rhemabiblequiz/src/audio/audio_controller.dart';
 import 'package:rhemabiblequiz/src/audio/sounds.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
 import 'package:rhemabiblequiz/src/commons/appBar.dart';
+import 'package:rhemabiblequiz/src/level_selection/provider/levelbook.dart';
 import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
@@ -25,6 +26,7 @@ class LevelSelectionScreen extends StatelessWidget {
     final questions = context.watch<Questions>();
     final size = MediaQuery.of(context).size;
     const gap = SizedBox(height: 8);
+    final levelbook = context.watch<LevelBook>();
     return Scaffold(
       backgroundColor: pallette.backgroundLevelSelection,
       body: Container(
@@ -60,6 +62,8 @@ class LevelSelectionScreen extends StatelessWidget {
                     width: size.width * .8,
                   ),
                   gap,
+                  gap,
+                  gap,
                   Container(
                     height: size.height * .8,
                     width: size.width * .8,
@@ -78,12 +82,33 @@ class LevelSelectionScreen extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     child: Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                                onPressed: levelbook.thereIspreviousbook
+                                    ? () {
+                                        levelbook.getpreviousbook();
+                                      }
+                                    : null,
+                                child: Text(levelbook.previousTitle)),
+                            TextButton(
+                                onPressed: levelbook.thereIsnextBook
+                                    ? () {
+                                        levelbook.getnextbook();
+                                      }
+                                    : null,
+                                child: Text(levelbook.nextTitle)),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                          ),
                           child: Center(
                             child: Text(
-                              'Select level',
-                              style: TextStyle(
+                              levelbook.currentTitle,
+                              style: const TextStyle(
                                 fontFamily: AppConstants.fontfamilypermenent,
                                 fontSize: 30,
                               ),
