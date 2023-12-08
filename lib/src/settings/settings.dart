@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/foundation.dart';
 import 'package:rhemabiblequiz/src/settings/persistence/settings_persistence.dart';

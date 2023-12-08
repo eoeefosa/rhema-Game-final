@@ -101,6 +101,7 @@ class PlayerProgress extends ChangeNotifier {
     _highestLevelReached = 0;
     _points = AppConstants.gamePoints;
     pointchange.value = _points;
+    LevelBook().resetbook();
 
     _ratings = generateRatings(totalLevel);
     _totalstars = 0;

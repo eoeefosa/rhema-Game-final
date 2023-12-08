@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 
 class LevelBook extends ChangeNotifier {
+  // static final LevelBook _LevelBook = LevelBook._internal();
+  // factory LevelBook() => _LevelBook;
+  // LevelBook._internal();
+  static final LevelBook _instance = LevelBook._internal();
+
+  factory LevelBook() {
+    return _instance;
+  }
+
+  LevelBook._internal();
+
   static const leveltitles = [
     'Genesis',
     'Exodus',
@@ -78,6 +89,10 @@ class LevelBook extends ChangeNotifier {
   String get currentTitle => leveltitles[currentbook];
   String get nextTitle => leveltitles[nextbook];
   String get previousTitle => previousbook < 0 ? "" : leveltitles[previousbook];
+  void resetbook() {
+    currentbook = 0;
+    notifyListeners();
+  }
 
   void getnextbook() {
     if ((currentbook + 1) < lastbook) {
@@ -87,7 +102,8 @@ class LevelBook extends ChangeNotifier {
   }
 
   bool get thereIspreviousbook => currentbook == 0 ? false : true;
-  bool get thereIsnextBook => currentbook+1 == leveltitles.length ? false : true;
+  bool get thereIsnextBook =>
+      currentbook + 1 == leveltitles.length ? false : true;
 
   void getpreviousbook() {
     if (currentbook > 0) {
