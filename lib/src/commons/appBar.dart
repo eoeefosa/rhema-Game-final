@@ -6,7 +6,7 @@ import 'package:rhemabiblequiz/src/settings/setting_widget.dart';
 
 import '../player_progress/gamepoints_widget.dart';
 
-class AppBarWidget extends StatelessWidget {
+class AppBarWidget extends StatefulWidget {
   const AppBarWidget({
     Key? key,
     required this.width,
@@ -18,14 +18,19 @@ class AppBarWidget extends StatelessWidget {
   final bool mainscreen;
 
   @override
+  State<AppBarWidget> createState() => _AppBarWidgetState();
+}
+
+class _AppBarWidgetState extends State<AppBarWidget> {
+  @override
   Widget build(BuildContext context) {
-    final iconSize = width / 5;
+    final iconSize = widget.width / 5;
     return SizedBox(
-      width: width,
+      width: widget.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: mainscreen
+        children: widget.mainscreen
             ? [
                 const SettingsWidget(),
                 const Spacer(),

@@ -10,6 +10,7 @@ import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
+import '../store/provider/store_controller.dart';
 import 'components/level_card.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
@@ -27,6 +28,8 @@ class LevelSelectionScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     const gap = SizedBox(height: 8);
     final levelbook = context.watch<LevelBook>();
+    final StoreProvider storeProvider = context.watch<StoreProvider>();
+
     return Scaffold(
       backgroundColor: pallette.backgroundLevelSelection,
       body: Container(
@@ -138,6 +141,7 @@ class LevelSelectionScreen extends StatelessWidget {
                                           playerProgress.highestLevelReached +
                                               1,
                                       onpressed: () {
+                                        questions.attachStore(storeProvider);
                                         questions.chooseLevel(index);
                                         final audioController =
                                             context.read<AudioController>();

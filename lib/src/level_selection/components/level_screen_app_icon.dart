@@ -13,7 +13,7 @@ class LevelScreenAppBarIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 10,
+      elevation: 4,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         decoration: BoxDecoration(

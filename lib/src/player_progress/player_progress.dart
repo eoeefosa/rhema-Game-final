@@ -15,6 +15,7 @@ class PlayerProgress extends ChangeNotifier {
   int _totalstars = 0;
   int totalLevel = Questions().questions.last.level;
   List<int> _ratings = generateRatings(11);
+  ValueNotifier pointchange = ValueNotifier(AppConstants.gamePoints);
   List<int> _ratingsget(String book) {
     if (book == LevelBook.leveltitles[0]) {
       return _ratings;
@@ -49,11 +50,13 @@ class PlayerProgress extends ChangeNotifier {
   int get highestLevelReached => _highestLevelReached;
 
   int get points => _points;
+  int oldpoint = 1000;
   Future<void> getLatestFromStore() async {
     final level = await _store.getHighestLevelReached();
     final gamepoint = await _store.getPoint();
     final gameStars = await _store.getStars();
     final saverating = await _store.getLevelRating(_highestLevelReached);
+
     //  UPDATE LEVEL
     if (level > _highestLevelReached) {
       _highestLevelReached = level;
@@ -65,8 +68,10 @@ class PlayerProgress extends ChangeNotifier {
     // UPDATE GAME POINT
     if (gamepoint > _points) {
       _points = gamepoint;
+      pointchange.value = _points;
       notifyListeners();
     } else if (_points > gamepoint) {
+      pointchange.value = _points;
       await _store.savePoint(_points);
     }
     // UPDATE STAR
@@ -95,8 +100,9 @@ class PlayerProgress extends ChangeNotifier {
     final int prevhighestlevel = _highestLevelReached;
     _highestLevelReached = 0;
     _points = AppConstants.gamePoints;
+    pointchange.value = _points;
+
     _ratings = generateRatings(totalLevel);
-    _points = AppConstants.gamePoints;
     _totalstars = 0;
 
     _store.saveHighestLevelReached(_highestLevelReached);
@@ -114,7 +120,10 @@ class PlayerProgress extends ChangeNotifier {
   }
 
   void addPoints(int addedPoints) {
+    oldpoint = _points;
     _points += addedPoints;
+    pointchange.value = _points;
+
     notifyListeners();
     unawaited(_store.savePoint(_points));
   }
@@ -150,6 +159,8 @@ class PlayerProgress extends ChangeNotifier {
   void setPoint(int points) {
     if (points > _points) {
       _points = points;
+      pointchange.value = _points;
+
       notifyListeners();
       unawaited(_store.savePoint(points));
     }

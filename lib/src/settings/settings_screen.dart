@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:rhemabiblequiz/src/commons/appBar.dart';
 import 'package:rhemabiblequiz/src/settings/cutom_name_dialog.dart';
 import 'package:rhemabiblequiz/src/settings/settings.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
+import '../player_progress/gamepoints_widget.dart';
 import '../player_progress/player_progress.dart';
 import '../style/main_menu_background.dart';
+
+String capitalizeFirstLetter(String word) {
+  if (word.isEmpty) {
+    return word; // Return the unchanged word if it's empty
+  }
+  return word[0].toUpperCase() + word.substring(1).toLowerCase();
+}
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -24,12 +33,24 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
     final palette = context.watch<Palette>();
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: MainMenuBackground(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: ListView(
             children: [
+              // AppBarWidget(width: size.width * .8),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  GamePoint(),
+                ],
+              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.end,
+              // ),
               _gap,
               const Text(
                 "Settings",
@@ -69,7 +90,7 @@ class SettingsScreen extends StatelessWidget {
                     SnackBar(
                         backgroundColor: Colors.red,
                         content: Text(
-                            "${settings.playerName.value[0].toUpperCase()}${settings.playerName.value.toLowerCase()} yours progress has been reset.")),
+                            "${capitalizeFirstLetter(settings.playerName.value)}  your game reset was successfull.")),
                   );
                 },
               ),

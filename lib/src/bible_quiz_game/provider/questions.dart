@@ -98,7 +98,12 @@ class Questions extends ChangeNotifier {
   }
 
   void rePlayLevel() {
+    streak = 0;
+
     if (currentLevel != null) {
+      streak = 0;
+      _rightAnswers = 0;
+      currentScore = 0;
       currentQuestionIndex = 0;
       currentQuestionAnswerIndex = null;
       _isFinish = false;
@@ -116,11 +121,16 @@ class Questions extends ChangeNotifier {
 
   void nextLevel() {
     final oldlevel = currentLevel;
+
     if (currentLevel != null) {
       if (oldlevel! < maxlevel) {
         currentLevel = oldlevel + 1;
       }
+      streak = 0;
+      _rightAnswers = 0;
       currentQuestionIndex = 0;
+      currentScore = 0;
+      _rightAnswers = 0;
       currentQuestionAnswerIndex = null;
       _isFinish = false;
 
@@ -136,6 +146,8 @@ class Questions extends ChangeNotifier {
   }
 
   void chooseLevel(int level) {
+    streak = 0;
+    currentScore = 0;
     currentLevel = level;
     // TODO: MIGHT REMOVE THIS
     currentQuestionIndex = 0;
@@ -168,6 +180,7 @@ class Questions extends ChangeNotifier {
   void reset() {
     currentScore = 0;
     seconds = 60;
+    streak = 0;
     timer = null;
     currentLevel = null;
     currentQuestionAnswerIndex = 0;
@@ -180,15 +193,19 @@ class Questions extends ChangeNotifier {
   void chooseAnswer(int index) {
     currentQuestionAnswerIndex = index;
     notifyListeners();
+    checkAnswer(index);
   }
 
   void checkAnswer(int index) {
     if (currentQuestion.answer == currentQuestion.options[index]) {
       _rightAnswers++;
       streak++;
+      // notifyListeners();
     } else {
       streak = 0;
+      // notifyListeners();
     }
+    notifyListeners();
   }
 
   void nextQuestion() {
@@ -202,7 +219,7 @@ class Questions extends ChangeNotifier {
       }
 
       print('Questions provider: _isFinish ran value of _isFinish=$_isFinish');
-      currentScore = _rightAnswers * (60 - seconds);
+      currentScore = (_rightAnswers + streak) * (60 - seconds);
       notifyListeners();
 
       seconds = 60;

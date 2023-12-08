@@ -52,9 +52,9 @@ class SettingsController {
     print('Music toggle');
 
     musicOn.value = !musicOn.value;
-    if (musicOn.value == true) {
-      muted.value = false;
-    }
+    // if (musicOn.value == true) {
+    //   muted.value = false;
+    // }
     _persistence.saveMusicOn(musicOn.value);
   }
 
@@ -62,10 +62,10 @@ class SettingsController {
     print('Musted toggle');
 
     muted.value = !muted.value;
-    if (muted.value == true) {
-      musicOn.value = false;
-      soundsOn.value = false;
-    }
+    // if (muted.value == true) {
+    //   musicOn.value = false;
+    //   soundsOn.value = false;
+    // }
 
     _persistence.saveMuted(muted.value);
   }
@@ -74,12 +74,12 @@ class SettingsController {
     print('Sound toggle');
 
     soundsOn.value = !soundsOn.value;
-    print('soundsOn.value=${soundsOn.value} mutted ${muted.value}');
-    if (soundsOn.value == true && muted.value == true) {
-      // muted.value = true;
-      toggleMuted();
-      // toggleMusicOn();
-    }
+    // print('soundsOn.value=${soundsOn.value} mutted ${muted.value}');
+    // if (soundsOn.value == true && muted.value == true) {
+    //   // muted.value = true;
+    //   toggleMuted();
+    //   // toggleMusicOn();
+    // }
     _persistence.saveSoundOn(soundsOn.value);
   }
 

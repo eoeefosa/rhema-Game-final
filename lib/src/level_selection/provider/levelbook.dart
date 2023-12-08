@@ -80,14 +80,14 @@ class LevelBook extends ChangeNotifier {
   String get previousTitle => previousbook < 0 ? "" : leveltitles[previousbook];
 
   void getnextbook() {
-    if (currentbook < lastbook) {
+    if ((currentbook + 1) < lastbook) {
       currentbook++;
     }
     notifyListeners();
   }
 
   bool get thereIspreviousbook => currentbook == 0 ? false : true;
-  bool get thereIsnextBook => currentbook == leveltitles.length ? false : true;
+  bool get thereIsnextBook => currentbook+1 == leveltitles.length ? false : true;
 
   void getpreviousbook() {
     if (currentbook > 0) {

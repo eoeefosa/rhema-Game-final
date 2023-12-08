@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/widgets/buttomoption.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/widgets/quiz_title_bar.dart';
+import 'package:rhemabiblequiz/src/style/constants.dart';
+import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../../audio/audio_controller.dart';
 import '../../audio/sounds.dart';
@@ -39,6 +41,7 @@ class _QuizScreenState extends State<QuizScreen> {
     final Questions question = context.watch<Questions>();
     gamelevel = question.currentLevel!;
     currentquestion = question.currentQuestionIndex;
+    final pallete = context.watch<Palette>();
 
     return BackGround(
       child: IgnorePointer(
@@ -95,6 +98,44 @@ class _QuizScreenState extends State<QuizScreen> {
                     alignment: Alignment.topCenter,
                     child: Column(
                       children: [
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        SizedBox(
+                          // height: 20,
+                          child: Column(
+                            children: [
+                              Text(
+                                'STREAK',
+                                style: TextStyle(
+                                    color: question.streak >= 2
+                                        ? Colors.yellow[900]
+                                        : pallete.ink,
+                                    fontSize: 12,
+                                    fontFamily:
+                                        AppConstants.fontfamilypermenent),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ...List.generate(
+                                      4,
+                                      (index) => Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8.0),
+                                            child: Icon(
+                                              Icons.star_rate,
+                                              size: 20,
+                                              color: question.streak > index
+                                                  ? Colors.yellow[900]
+                                                  : pallete.ink,
+                                            ),
+                                          ))
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         const SizedBox(
                           height: 16,
                         ),
@@ -213,9 +254,9 @@ class _QuizScreenState extends State<QuizScreen> {
       DateTime.now().difference(_startOfPlay),
     );
 
-    final score = gameScore ?? 0;
+    // final score = gameScore ?? 0;
     final playerProgress = context.read<PlayerProgress>();
-    playerProgress.addPoints(score);
+    // playerProgress.addPoints(score);
     final previousLevel = playerProgress.highestLevelReached;
     playerProgress.addStar(level: gamelevel, star: rightAnswer);
 
@@ -237,7 +278,9 @@ class _QuizScreenState extends State<QuizScreen> {
     if (!mounted) return;
 
     // TODO gameservicesController
-    GoRouter.of(context).go('/play/score_screen', extra: {'score': score});
+    GoRouter.of(context).go(
+      '/play/score_screen',
+    );
   }
 }
 

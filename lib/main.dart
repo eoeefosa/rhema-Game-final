@@ -104,11 +104,16 @@ class MyApp extends StatelessWidget {
                 SettingsController(persistence: settingsPersistence)
                   ..loadStateFromPersistence(),
           ),
-          ProxyProvider<StoreProvider, Questions>(
-              update: (context, storeprovider, questions) {
-            questions!.attachStore(storeprovider);
-            return questions;
-          }),
+          Provider<StoreProvider>(
+            create: (context) => StoreProvider(),
+          ),
+          // ProxyProvider<StoreProvider, Questions>(
+          //     lazy: false,
+          //     create: (context) => Questions(),
+          //     update: (context, storeprovider, questions) {
+          //       questions!.attachStore(storeprovider);
+          //       return questions;
+          //     }),
           ProxyProvider2<SettingsController, ValueNotifier<AppLifecycleState>,
               AudioController>(
             lazy: false,

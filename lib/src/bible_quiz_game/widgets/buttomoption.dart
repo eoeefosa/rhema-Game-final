@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/constants.dart';
+import 'package:rhemabiblequiz/src/bible_quiz_game/model/question_model.dart';
+import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
 import 'package:rhemabiblequiz/src/settings/settings.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
@@ -72,6 +74,7 @@ class ButtomOptions extends StatelessWidget {
                             children: [
                               Column(
                                 children: [
+                                  const Text(''),
                                   ValueListenableBuilder<bool>(
                                     valueListenable: settings.soundsOn,
                                     builder: (context, soundOn, child) =>
@@ -86,6 +89,7 @@ class ButtomOptions extends StatelessWidget {
                                           settings.toggleSoundsOn(),
                                     ),
                                   ),
+                                  const Text(''),
                                   ValueListenableBuilder(
                                     valueListenable: settings.musicOn,
                                     builder: (context, musicOn, child) =>
@@ -98,6 +102,22 @@ class ButtomOptions extends StatelessWidget {
                                           settings.toggleMusicOn(),
                                     ),
                                   ),
+                                  
+                                  const Text(''),
+                                  _SettingsLine(
+                                    'RESTART GAME',
+                                    Icon(
+                                      Icons.restore_sharp,
+                                      color: Colors.red[900],
+                                    ),
+                                    onSelected: () {
+                                      context.read<Questions>().rePlayLevel();
+                                      context.pop();
+                                    },
+                                    color: Colors.red[900],
+                                  ),
+                                  const Text(''),
+                                  const Text(''),
                                 ],
                               ),
                               Row(
@@ -256,8 +276,8 @@ class _SettingsLine extends StatelessWidget {
   final Widget icon;
   final void Function()? onSelected;
   // ignore: unused_element
-  const _SettingsLine(this.title, this.icon, {this.onSelected});
-
+  const _SettingsLine(this.title, this.icon, {this.onSelected, this.color});
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -270,10 +290,16 @@ class _SettingsLine extends StatelessWidget {
           child: Row(children: [
             Text(
               title,
-              style: const TextStyle(
-                fontFamily: AppConstants.fontfamilyLuckiestgut,
-                letterSpacing: 2,
-              ),
+              style: color == null
+                  ? const TextStyle(
+                      fontFamily: AppConstants.fontfamilyLuckiestgut,
+                      letterSpacing: 2,
+                    )
+                  : TextStyle(
+                      color: color,
+                      fontFamily: AppConstants.fontfamilyLuckiestgut,
+                      letterSpacing: 2,
+                    ),
             ),
             const Spacer(),
             icon,
