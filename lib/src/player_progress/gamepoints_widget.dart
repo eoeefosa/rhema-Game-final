@@ -1,58 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/level_selection/components/level_screen_app_icon.dart';
+import 'package:rhemabiblequiz/src/style/constants.dart';
+import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../bible_quiz_game/constants.dart';
 import 'player_progress.dart';
 
 class GamePoint extends StatelessWidget {
-  const GamePoint({super.key});
+  const GamePoint({super.key, this.color, this.shape, this.elevation});
+  final Color? color;
+  final OutlinedBorder? shape;
+  final double? elevation;
 
   @override
   Widget build(BuildContext context) {
-    return LevelScreenAppBarIcons(
+    final palette = context.watch<Palette>();
+    // return LevelScreenAppBarIcons(
+    //   color: Colors.yellow.shade400,
+    //   child: Row(
+    //     children: [diamond(size: 20), const PointsWidget()],
+    //   ),
+    // );
+    return ElevatedButton(
+      onPressed: () {
+        context.push('/store');
+      },
+      style: ElevatedButton.styleFrom(
+        elevation: elevation,
+        shape: shape,
+        backgroundColor: color ?? palette.appbarwidgetbackground,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+      ),
       child: Row(
         children: [diamond(size: 20), const PointsWidget()],
       ),
     );
-    // return ElevatedButton.icon(
-    //   onPressed: () {},
-    //   style: ElevatedButton.styleFrom(
-    //       elevation: 8.0,
-    //       backgroundColor: const Color.fromRGBO(227, 210, 182, 1)),
-    //   icon: diamond(size: 20),
-    //   label: Text("${playerProgress.points}"),
-    // );
   }
 }
 
-class PointsWidget extends StatefulWidget {
-  const PointsWidget({
-    super.key,
-  });
-
-  @override
-  State<PointsWidget> createState() => _PointsWidgetState();
-}
-
-class _PointsWidgetState extends State<PointsWidget>
-    with TickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    _animation = Tween<double>(begin: 0, end: 1).animate(_animationController);
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
+class PointsWidget extends StatelessWidget {
+  const PointsWidget() : super(key: const Key('GAme point'));
 
 // _animationCo
   @override
@@ -61,32 +50,30 @@ class _PointsWidgetState extends State<PointsWidget>
 
     int oldpoint = playerProgress.oldpoint;
     int newpoint = playerProgress.points;
-// Check if the points have changed
-    if (oldpoint != newpoint) {
-      _startAnimation(oldpoint, newpoint);
-      playerProgress.oldpoint =
-          newpoint; // Update oldPoint for the next animation
-    }
+//
 
-    return ListenableBuilder(
-        listenable: playerProgress.pointchange,
-        builder: (context, child) {
-          return AnimatedBuilder(
-              animation: _animationController,
-              builder: (context, child) {
-                int currentPoint = (playerProgress.oldpoint +
-                        (playerProgress.points - playerProgress.oldpoint) *
-                            _animation.value)
-                    .round();
-
-                return Text("${playerProgress.points}");
-              });
-        });
-  }
-
-  void _startAnimation(int oldPoint, int newPoint) {
-    _animationController.reset();
-    _animationController.forward();
+    return TweenAnimationBuilder<int>(
+      key: ValueKey<int>(newpoint),
+      onEnd: () => playerProgress.oldpoint = newpoint,
+      tween: IntTween(begin: oldpoint, end: newpoint),
+      duration: const Duration(milliseconds: 2000),
+      builder: (_, int value, child) {
+        if (newpoint < oldpoint) {
+          value = newpoint;
+        }
+        return Text(
+          value.toString(),
+          style: const TextStyle(
+            // fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            // fontFamily: AppConstants.fontfamilypermenent,
+            letterSpacing: 2,
+            fontFamily: 'Comic Sans MS', // Use a fun and kid-friendly font
+            color: Colors.green, // Choose a fun color
+          ),
+        );
+      },
+    );
   }
 }
 

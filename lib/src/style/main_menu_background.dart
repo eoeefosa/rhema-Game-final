@@ -12,6 +12,7 @@ class MainMenuBackground extends StatelessWidget {
             colorFilter: ColorFilter.mode(
                 color != null ? color! : Colors.brown.withOpacity(0.2),
                 BlendMode.srcOver),
+            // colorFilter: ,
             image: const AssetImage('assets/images/boob.png'),
             fit: BoxFit.fill,
           ),

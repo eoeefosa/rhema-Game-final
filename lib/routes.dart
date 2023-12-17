@@ -1,6 +1,9 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:rhemabiblequiz/src/audio/audio_controller.dart';
+import 'package:rhemabiblequiz/src/in_app_purchase/store_screen.dart';
 import 'package:rhemabiblequiz/src/level_selection/level_selection_screen.dart';
 import 'package:rhemabiblequiz/src/main_menu/main_menu_screen.dart';
 import 'package:rhemabiblequiz/src/settings/settings_screen.dart';
@@ -31,12 +34,15 @@ class AppRoutes {
                 routes: [
                   GoRoute(
                       path: 'quiz_game',
-                      pageBuilder: (context, state) => buildMyTransition(
-                            child: const QuizScreen(),
-                            color: context
-                                .watch<Palette>()
-                                .backgroundLevelSelection,
-                          )),
+                      pageBuilder: (context, state) {
+                        print("hellow");
+                        context.watch<AudioController>().playgame();
+                        return buildMyTransition(
+                          child: const QuizScreen(),
+                          color:
+                              context.watch<Palette>().backgroundLevelSelection,
+                        );
+                      }),
                   GoRoute(
                       path: 'won_quiz',
                       pageBuilder: (context, state) {
@@ -65,11 +71,28 @@ class AppRoutes {
                       })
                 ]),
             GoRoute(
-              path: SettingsScreen.routename,
-              builder: (context, state) => const SettingsScreen(
-                key: Key('settings'),
-              ),
-            )
+                path: 'store',
+                pageBuilder: (context, state) {
+                  return buildMyTransition(
+                    child: const StoreScreen(
+                      key: Key('score screen'),
+                    ),
+                    color: context.watch<Palette>().backgroundPlaySession,
+                  );
+                }),
+            GoRoute(
+                path: SettingsScreen.routename,
+                pageBuilder: (context, state) {
+                  return buildMyTransition(
+                      child: const SettingsScreen(
+                        key: Key('settings'),
+                      ),
+                      color: context.watch<Palette>().artipapercolor);
+                }
+                // builder: (context, state) => const SettingsScreen(
+                //   key: Key('settings'),
+                // ),
+                )
           ]),
     ],
   );

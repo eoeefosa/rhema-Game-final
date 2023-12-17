@@ -28,7 +28,7 @@ class LevelSelectionScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     const gap = SizedBox(height: 8);
     final levelbook = context.watch<LevelBook>();
-    final StoreProvider storeProvider = context.watch<StoreProvider>();
+    // final StoreProvider storeProvider = context.watch<StoreProvider>();
 
     return Scaffold(
       backgroundColor: pallette.backgroundLevelSelection,
@@ -36,6 +36,8 @@ class LevelSelectionScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/wood.jpg"),
+            // colorFilter: ColorFilter.linearToSrgbGamma(),
+            // colorFilter: ColorFilter.srgbToLinearGamma(),
             fit: BoxFit.fill,
           ),
         ),
@@ -51,6 +53,8 @@ class LevelSelectionScreen extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/flower.png"),
+
+//
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -78,6 +82,8 @@ class LevelSelectionScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       image: const DecorationImage(
                         image: AssetImage('assets/images/boob.png'),
+                        // colorFilter: ColorFilter.linearToSrgbGamma(),
+                        colorFilter: ColorFilter.srgbToLinearGamma(),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -101,24 +107,29 @@ class LevelSelectionScreen extends StatelessWidget {
                                         levelbook.getnextbook();
                                       }
                                     : null,
-                                child: Text(levelbook.nextTitle)),
+                                child: Text(
+                                  levelbook.nextTitle,
+                                )),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                          ),
-                          child: Center(
-                            child: Text(
-                              levelbook.currentTitle,
-                              style: const TextStyle(
-                                fontFamily: AppConstants.fontfamilypermenent,
-                                fontSize: 30,
+                        SizedBox(
+                          height: 80,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                            ),
+                            child: Center(
+                              child: Text(
+                                levelbook.currentTitle,
+                                style: const TextStyle(
+                                  fontFamily: AppConstants.fontfamilypermenent,
+                                  fontSize: 30,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 50),
+                        // const SizedBox(height: 0),
                         Expanded(
                           child: ListView(
                             children: [
@@ -141,7 +152,7 @@ class LevelSelectionScreen extends StatelessWidget {
                                           playerProgress.highestLevelReached +
                                               1,
                                       onpressed: () {
-                                        questions.attachStore(storeProvider);
+                                        // questions.attachStore(storeProvider);
                                         questions.chooseLevel(index);
                                         final audioController =
                                             context.read<AudioController>();

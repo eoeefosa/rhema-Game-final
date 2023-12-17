@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/constants.dart';
-import 'package:rhemabiblequiz/src/bible_quiz_game/model/question_model.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
 import 'package:rhemabiblequiz/src/settings/settings.dart';
+import 'package:rhemabiblequiz/src/store/provider/store_controller.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
-
-import '../../level_selection/level_selection_screen.dart';
 
 const Color widgetcolor = Color.fromARGB(255, 134, 73, 3);
 const Color contextColor = Colors.white;
@@ -26,7 +24,7 @@ class ButtomOptions extends StatelessWidget {
     final gap = SizedBox(width: width / 100);
     final pallette = context.watch<Palette>();
     final settings = context.watch<SettingsController>();
-
+    final questions = context.watch<Questions>();
     return SizedBox(
       width: width,
       child: Row(
@@ -45,7 +43,10 @@ class ButtomOptions extends StatelessWidget {
                   color: contextColor,
                 ),
                 onTap: () {
+                  questions.pauseTimer();
                   showDialog(
+                      barrierDismissible: false,
+                      barrierLabel: "Game paused",
                       context: context,
                       builder: (_) => SimpleDialog(
                             // contentPadding: const EdgeInsets.symmetric(
@@ -102,7 +103,6 @@ class ButtomOptions extends StatelessWidget {
                                           settings.toggleMusicOn(),
                                     ),
                                   ),
-                                  
                                   const Text(''),
                                   _SettingsLine(
                                     'RESTART GAME',
@@ -112,7 +112,11 @@ class ButtomOptions extends StatelessWidget {
                                     ),
                                     onSelected: () {
                                       context.read<Questions>().rePlayLevel();
-                                      context.pop();
+                                      Future.delayed(
+                                              const Duration(milliseconds: 500))
+                                          .then((value) {
+                                        context.pop();
+                                      });
                                     },
                                     color: Colors.red[900],
                                   ),
@@ -144,6 +148,7 @@ class ButtomOptions extends StatelessWidget {
                                   // const Spacer(),
                                   TextButton(
                                       onPressed: () {
+                                        questions.resumeTimer();
                                         Navigator.of(context).pop();
                                       },
                                       style: TextButton.styleFrom(
@@ -174,6 +179,9 @@ class ButtomOptions extends StatelessWidget {
           Column(
             children: [
               MyCustomElevatedButton(
+                onTap: () {
+                  questions.addtimer();
+                },
                 widgetsize: widgetsize,
                 iconPadding: iconPadding,
                 child: Icon(
@@ -184,8 +192,16 @@ class ButtomOptions extends StatelessWidget {
               ),
               gap,
               Text(
-                "x2",
-                style: TextStyle(color: pallette.pen),
+                questions.addTimerValue < 1
+                    ? "${questions.addTimerValue}"
+                    : "x${questions.addTimerValue}",
+                style: TextStyle(
+                  fontSize: 15,
+                  letterSpacing: 2,
+                  fontFamily: 'Comic Sans MS',
+                  color: pallette.redPen,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),
@@ -197,7 +213,7 @@ class ButtomOptions extends StatelessWidget {
             children: [
               MyCustomElevatedButton(
                 onTap: () {
-                  Navigator.of(context).pop();
+                  questions.clear5050();
                 },
                 widgetsize: widgetsize,
                 iconPadding: iconPadding,
@@ -209,8 +225,16 @@ class ButtomOptions extends StatelessWidget {
               ),
               gap,
               Text(
-                "x2",
-                style: TextStyle(color: pallette.pen),
+                questions.clearWrongValue < 1
+                    ? "${questions.clearWrongValue}"
+                    : "x${questions.clearWrongValue}",
+                style: TextStyle(
+                  fontSize: 15,
+                  letterSpacing: 2,
+                  fontFamily: 'Comic Sans MS',
+                  color: pallette.redPen,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),
@@ -221,6 +245,9 @@ class ButtomOptions extends StatelessWidget {
           Column(
             children: [
               MyCustomElevatedButton(
+                onTap: () {
+                  questions.usehint();
+                },
                 widgetsize: widgetsize,
                 iconPadding: iconPadding,
                 child: RotatedBox(
@@ -233,8 +260,16 @@ class ButtomOptions extends StatelessWidget {
               ),
               gap,
               Text(
-                "x2",
-                style: TextStyle(color: pallette.pen),
+                questions.clearWrongValue < 1
+                    ? "${questions.hint}"
+                    : "x${questions.hint}",
+                style: TextStyle(
+                  fontSize: 15,
+                  letterSpacing: 2,
+                  fontFamily: 'Comic Sans MS',
+                  color: pallette.redPen,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),
@@ -257,10 +292,18 @@ class ButtomOptions extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "+50",
-                    style: TextStyle(color: pallette.pen),
+                    questions.adsWatchvalue < 1
+                        ? "${questions.adsWatchvalue}"
+                        : "+${questions.adsWatchvalue}",
+                    style: TextStyle(
+                      fontSize: 15,
+                      letterSpacing: 2,
+                      fontFamily: 'Comic Sans MS',
+                      color: pallette.redPen,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  diamond(),
+                  diamond(size: 20),
                 ],
               ),
             ],

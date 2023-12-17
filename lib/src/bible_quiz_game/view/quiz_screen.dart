@@ -69,6 +69,8 @@ class _QuizScreenState extends State<QuizScreen> {
                 height: 8,
               ),
               Titlebar(
+                width: size.width * .6,
+                height: size.height * .08,
                 leveldifficulty: 'Level ${question.currentLevel! + 1}',
                 maxStar: question.ratings[question.currentLevel!],
                 score: question.rightAnswers,
@@ -101,41 +103,41 @@ class _QuizScreenState extends State<QuizScreen> {
                         const SizedBox(
                           height: 16,
                         ),
-                        SizedBox(
-                          // height: 20,
-                          child: Column(
-                            children: [
-                              Text(
-                                'STREAK',
-                                style: TextStyle(
-                                    color: question.streak >= 2
-                                        ? Colors.yellow[900]
-                                        : pallete.ink,
-                                    fontSize: 12,
-                                    fontFamily:
-                                        AppConstants.fontfamilypermenent),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ...List.generate(
-                                      4,
-                                      (index) => Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8.0),
-                                            child: Icon(
-                                              Icons.star_rate,
-                                              size: 20,
-                                              color: question.streak > index
-                                                  ? Colors.yellow[900]
-                                                  : pallete.ink,
-                                            ),
-                                          ))
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        // SizedBox(
+                        //   // height: 20,
+                        //   child: Column(
+                        //     children: [
+                        //       Text(
+                        //         'STREAK',
+                        //         style: TextStyle(
+                        //             color: question.streak >= 2
+                        //                 ? Colors.yellow[900]
+                        //                 : pallete.ink,
+                        //             fontSize: 12,
+                        //             fontFamily:
+                        //                 AppConstants.fontfamilypermenent),
+                        //       ),
+                        //       Row(
+                        //         mainAxisAlignment: MainAxisAlignment.center,
+                        //         children: [
+                        //           ...List.generate(
+                        //               4,
+                        //               (index) => Padding(
+                        //                     padding: const EdgeInsets.symmetric(
+                        //                         horizontal: 8.0),
+                        //                     child: Icon(
+                        //                       Icons.star_rate,
+                        //                       size: 20,
+                        //                       color: question.streak > index
+                        //                           ? Colors.yellow[900]
+                        //                           : pallete.ink,
+                        //                     ),
+                        //                   ))
+                        //         ],
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                         const SizedBox(
                           height: 16,
                         ),
@@ -150,24 +152,35 @@ class _QuizScreenState extends State<QuizScreen> {
                             borderRadius: BorderRadius.circular(8),
                             image: const DecorationImage(
                               image: AssetImage('assets/images/boob.png'),
+                              colorFilter: ColorFilter.linearToSrgbGamma(),
                               fit: BoxFit.fill,
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 8),
+                              horizontal: 8, vertical: 16),
                           child: Column(
                             children: [
                               Text(
                                 'Question ${question.currentQuestionIndex + 1}/4',
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'Comic Sans MS',
+                                  color: pallete.inkFullOpacity,
+                                  fontWeight: FontWeight.w900,
                                 ),
                               ),
+                              const SizedBox(height: 8),
                               Text(
                                 question.currentQuestion.question,
                                 textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  letterSpacing: 2,
+                                  fontFamily: 'Comic Sans MS',
+                                  color: pallete.inkFullOpacity,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ],
                           ),
@@ -193,12 +206,12 @@ class _QuizScreenState extends State<QuizScreen> {
                                     question.chooseAnswer(index);
                                   }
                                   isSelected = true;
-                                  // TODO: MAKE DYNAMIC
-                                  await Future.delayed(
-                                      const Duration(milliseconds: 200));
-                                  if (!question.isFinish) {
-                                    question.nextQuestion();
-                                  }
+                                  // // TODO: MAKE DYNAMIC
+                                  // await Future.delayed(
+                                  //     const Duration(milliseconds: 200));
+                                  // if (!question.isFinish) {
+                                  //   question.nextQuestion();
+                                  // }
                                 },
                               ),
                             );
@@ -219,9 +232,11 @@ class _QuizScreenState extends State<QuizScreen> {
             child: Visibility(
               visible: _duringCelebration,
               child: IgnorePointer(
-                child: Confetti(
-                  isStopped: !_duringCelebration,
-                ),
+                child: question.streak > 3
+                    ? Confetti(
+                        isStopped: !_duringCelebration,
+                      )
+                    : Container(),
               ),
             ),
           ),

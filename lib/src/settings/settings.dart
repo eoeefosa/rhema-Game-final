@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:rhemabiblequiz/src/settings/persistence/settings_persistence.dart';
 
@@ -16,8 +15,9 @@ class SettingsController {
   ValueNotifier<bool> muted = ValueNotifier(false);
   ValueNotifier<String> playerName = ValueNotifier('New Player');
   ValueNotifier<bool> soundsOn = ValueNotifier(false);
-  bool isSoundson = false;
   ValueNotifier<bool> musicOn = ValueNotifier(false);
+  // TODO: LOAD FROM PERISTENT
+  ValueNotifier<int> volume = ValueNotifier(10);
 
   // /// Creates a new instance of [SettingsController] backed by [persistence].
   // SettingsController({required SettingsPersistence persistence})
@@ -34,7 +34,6 @@ class SettingsController {
           .then((value) => muted.value = value),
       _persistence.getSoundsOn().then((value) {
         soundsOn.value = value;
-        isSoundson = value;
         // notifyListeners();
       }),
       _persistence.getMusicOn().then((value) => musicOn.value = value),

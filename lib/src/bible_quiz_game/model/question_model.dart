@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
@@ -17,7 +18,40 @@ class Question {
     required this.bibleReference,
     required this.level,
   });
-  
+
+  Question clear50() {
+    List<String> updatedOptions = List.from(options);
+
+    // Get a list of indices of wrong options
+    List<int> indicesOfWrongOptions = updatedOptions
+        .asMap()
+        .entries
+        .where((entry) => entry.value != answer)
+        .map((entry) => entry.key)
+        .toList();
+
+    // Ensure there are at least two wrong options to clear
+    if (indicesOfWrongOptions.length >= 2) {
+      // Shuffle the list of wrong options
+      indicesOfWrongOptions.shuffle();
+
+      // Leave the first wrong option and clear the rest
+      for (int i = 0; i < indicesOfWrongOptions.length; i++) {
+        if (i != 0) {
+          updatedOptions[indicesOfWrongOptions[i]] = "";
+        }
+      }
+    }
+
+    return Question(
+      id: id,
+      question: question,
+      options: updatedOptions,
+      answer: answer,
+      bibleReference: bibleReference,
+      level: level,
+    );
+  }
 
   Question copyWith({
     int? id,
@@ -61,7 +95,8 @@ class Question {
 
   String toJson() => json.encode(toMap());
 
-  factory Question.fromJson(String source) => Question.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Question.fromJson(String source) =>
+      Question.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -71,23 +106,22 @@ class Question {
   @override
   bool operator ==(covariant Question other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.question == question &&
-      listEquals(other.options, options) &&
-      other.answer == answer &&
-      other.bibleReference == bibleReference &&
-      other.level == level;
+
+    return other.id == id &&
+        other.question == question &&
+        listEquals(other.options, options) &&
+        other.answer == answer &&
+        other.bibleReference == bibleReference &&
+        other.level == level;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      question.hashCode ^
-      options.hashCode ^
-      answer.hashCode ^
-      bibleReference.hashCode ^
-      level.hashCode;
+        question.hashCode ^
+        options.hashCode ^
+        answer.hashCode ^
+        bibleReference.hashCode ^
+        level.hashCode;
   }
 }

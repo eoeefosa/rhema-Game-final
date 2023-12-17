@@ -43,7 +43,10 @@ class OptionCard extends StatelessWidget {
               option,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 15,
+                letterSpacing: 2,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Comic Sans MS',
                 color: textColor(answerCardStatus),
               ),
             ),

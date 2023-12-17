@@ -4,11 +4,14 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/commons/appBar.dart';
 import 'package:rhemabiblequiz/src/main_menu/main_menu_screen.dart';
+import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../audio/audio_controller.dart';
 import '../audio/sounds.dart';
 import '../bible_quiz_game/provider/questions.dart';
+import '../level_selection/level_selection_screen.dart';
 import '../player_progress/player_progress.dart';
+import '../style/constants.dart';
 import '../style/main_menu_background.dart';
 
 class ScoreScreen extends StatefulWidget {
@@ -40,13 +43,14 @@ class _ScoreScreenState extends State<ScoreScreen>
     final playerProgress = context.watch<PlayerProgress>();
     int durationtime = 2000;
     const gap = SizedBox(height: 10);
+    final palette = context.watch<Palette>();
     final questions = context.watch<Questions>();
 
     return Scaffold(
       body: MainMenuBackground(
         color: questions.rightAnswers > 2
             ? Colors.green.withOpacity(0.2)
-            : Colors.blueGrey.withOpacity(0.2),
+            : Colors.yellow.withOpacity(0.2),
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -57,7 +61,7 @@ class _ScoreScreenState extends State<ScoreScreen>
                 mainscreen: true,
               ),
               SizedBox(
-                height: size.height * .5,
+                height: size.height * .4,
                 child: Lottie.asset(
                   questions.rightAnswers < 2
                       ? 'assets/animation/animation_lme1emfg.json'
@@ -98,7 +102,11 @@ class _ScoreScreenState extends State<ScoreScreen>
               // A playful message to encourage and praise the child
               // TODO LIST OF RANDOM MESSAGES
               Text(
-                questions.rightAnswers < 2 ? 'Try Again' : 'Great Job!',
+                questions.rightAnswers < 2
+                    ? 'Try Again'
+                    : questions.streak > 3
+                        ? 'Excellent'
+                        : 'Great Job!',
                 style: const TextStyle(
                   fontSize: 24.0,
                   fontFamily: 'Comic Sans MS',
@@ -114,7 +122,7 @@ class _ScoreScreenState extends State<ScoreScreen>
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    ElevatedButton(
+                    TextButton(
                       onPressed: () {
                         questions.rePlayLevel();
                         final audioController = context.read<AudioController>();
@@ -125,10 +133,25 @@ class _ScoreScreenState extends State<ScoreScreen>
                         // Navigate back to the quiz or main menu
                         // Navigator.push(context, MaterialPageRoute(builder: (context) => YourQuizScreen()));
                       },
-                      child: const Text('Play Again'),
+                      child: Text(
+                        'Play Again',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                          // fontFamily,
+                          fontFamily: AppConstants.fontfamilypermenent,
+                          letterSpacing: 2,
+                          // fontFamily:
+                          //     'Comic Sans MS', // Use a fun and kid-friendly font
+                          color: palette.inkFullOpacity,
+                        ),
+                      ),
                     ),
                     const Spacer(),
-                    ElevatedButton(
+                    TextButton(
+                      style: ElevatedButton.styleFrom(
+                          // backgroundColor: palette.inkFullOpacity,
+                          ),
                       onPressed: () {
                         questions.nextLevel();
                         final audioController = context.read<AudioController>();
@@ -139,7 +162,19 @@ class _ScoreScreenState extends State<ScoreScreen>
                         // Navigate back to the quiz or main menu
                         // Navigator.push(context, MaterialPageRoute(builder: (context) => YourQuizScreen()));
                       },
-                      child: const Text('Next Level'),
+                      child: Text(
+                        'Next Level',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                          // fontFamily,
+                          fontFamily: AppConstants.fontfamilypermenent,
+                          letterSpacing: 2,
+                          // fontFamily:
+                          //     'Comic Sans MS', // Use a fun and kid-friendly font
+                          color: palette.inkFullOpacity,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -151,7 +186,7 @@ class _ScoreScreenState extends State<ScoreScreen>
                 child: Row(
                   children: [
                     Expanded(
-                      child: ElevatedButton(
+                      child: TextButton(
                         onPressed: () {
                           final audioController =
                               context.read<AudioController>();
@@ -162,7 +197,52 @@ class _ScoreScreenState extends State<ScoreScreen>
                           // Navigate back to the quiz or main menu
                           // Navigator.push(context, MaterialPageRoute(builder: (context) => YourQuizScreen()));
                         },
-                        child: const Text('Main Menu'),
+                        child: Text(
+                          'Main Menu',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            // fontFamily,
+                            fontFamily: AppConstants.fontfamilypermenent,
+                            letterSpacing: 2,
+                            // fontFamily:
+                            //     'Comic Sans MS', // Use a fun and kid-friendly font
+                            color: palette.redPen,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          final audioController =
+                              context.read<AudioController>();
+                          audioController.playSfx(SfxType.buttonTap);
+                          GoRouter.of(context).go(LevelSelectionScreen.route);
+
+                          // Navigate back to the quiz or main menu
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => YourQuizScreen()));
+                        },
+                        child: Text(
+                          'LEVEL SCREEN',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            // fontFamily,
+                            fontFamily: AppConstants.fontfamilypermenent,
+                            letterSpacing: 2,
+                            // fontFamily:
+                            //     'Comic Sans MS', // Use a fun and kid-friendly font
+                            color: palette.ink,
+                          ),
+                        ),
                       ),
                     ),
                   ],

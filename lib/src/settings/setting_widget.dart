@@ -56,28 +56,25 @@ class SettingsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final audioController = context.watch<AudioController>();
     final palette = context.watch<Palette>();
-    return LevelScreenAppBarIcons(
-      onTap: () {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: palette.appbarwidgetbackground,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+      ),
+      // color: Colors.yellow.shade400,
+      onPressed: () {
         audioController.playSfx(SfxType.buttonTap);
         GoRouter.of(context).push(SettingsScreen.route);
       },
       child: width == null
-          ? const Row(children: [
-              Icon(
-                Icons.settings,
-              ),
-              Text("Setting")
-            ])
-          : Row(children: [
-              Icon(
-                Icons.settings,
-                color: palette.darkPen,
-              ),
-              Text(
-                "Setting",
-                style: TextStyle(color: palette.darkPen),
-              )
-            ]),
+          ? Icon(
+              Icons.settings,
+              color: palette.inkFullOpacity,
+            )
+          : Icon(
+              Icons.settings,
+              color: palette.inkFullOpacity,
+            ),
     );
   }
 }

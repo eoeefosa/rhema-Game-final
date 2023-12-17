@@ -239,6 +239,13 @@ class AudioController {
     _musicPlayer.play(AssetSource(_playlist.first.filename));
   }
 
+  void playgame() {
+    print('playgame called');
+    _log.info('starting music');
+    _stopAllSound();
+    _musicPlayer.play(AssetSource('music/Mr_Smith-This_Could_Get_Dark.mp3'));
+  }
+
   void _stopAllSound() {
     if (_musicPlayer.state == PlayerState.playing) {
       _musicPlayer.pause();

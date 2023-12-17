@@ -5,10 +5,12 @@ class LevelScreenAppBarIcons extends StatelessWidget {
     super.key,
     this.child,
     this.onTap,
+    this.color,
   });
 
   final Widget? child;
   final void Function()? onTap;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class LevelScreenAppBarIcons extends StatelessWidget {
         decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(16),
-            color: const Color.fromRGBO(227, 210, 182, 1)),
+            color: color ?? const Color.fromRGBO(227, 210, 182, 1)),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
         child: InkWell(
           onTap: onTap,

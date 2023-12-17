@@ -54,6 +54,7 @@ class PlayerProgress extends ChangeNotifier {
   Future<void> getLatestFromStore() async {
     final level = await _store.getHighestLevelReached();
     final gamepoint = await _store.getPoint();
+    oldpoint = gamepoint;
     final gameStars = await _store.getStars();
     final saverating = await _store.getLevelRating(_highestLevelReached);
 
@@ -105,6 +106,7 @@ class PlayerProgress extends ChangeNotifier {
 
     _ratings = generateRatings(totalLevel);
     _totalstars = 0;
+    notifyListeners();
 
     _store.saveHighestLevelReached(_highestLevelReached);
     _store.savePoint(_points);
@@ -124,6 +126,7 @@ class PlayerProgress extends ChangeNotifier {
     oldpoint = _points;
     _points += addedPoints;
     pointchange.value = _points;
+    // point=_points
 
     notifyListeners();
     unawaited(_store.savePoint(_points));

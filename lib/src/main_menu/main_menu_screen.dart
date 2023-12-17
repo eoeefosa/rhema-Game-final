@@ -14,8 +14,6 @@ import '../style/constants.dart';
 import '../style/main_menu_background.dart';
 import 'list_card.dart';
 
-
-
 class MainMenuScreen extends StatelessWidget {
   const MainMenuScreen({super.key});
   static const route = '/';
@@ -31,6 +29,7 @@ class MainMenuScreen extends StatelessWidget {
     const gap = SizedBox(height: 16);
     return Scaffold(
       body: MainMenuBackground(
+        color: Colors.yellow.withOpacity(.2),
         child: Column(
           children: [
             gap,
@@ -55,7 +54,6 @@ class MainMenuScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(
               width: double.infinity,
               height: 150,
@@ -82,7 +80,6 @@ class MainMenuScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
             gap,
             SafeArea(
               top: false,
@@ -124,6 +121,10 @@ class MainMenuScreen extends StatelessWidget {
                       ),
                     ],
                     _gap,
+                    // ElevatedButton(
+                    //   onPressed: () {},
+                    //   child: const Text("Quit"),
+                    // ),
                     LIstcard(
                         text: "Quit",
                         onTap: () {

@@ -17,7 +17,6 @@ import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 import 'package:rhemabiblequiz/src/settings/persistence/local_storage_settings_persistences.dart';
 import 'package:rhemabiblequiz/src/settings/persistence/settings_persistence.dart';
 import 'package:rhemabiblequiz/src/settings/settings.dart';
-import 'package:rhemabiblequiz/src/store/provider/store_controller.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 import 'package:rhemabiblequiz/src/style/snack_bar.dart';
 
@@ -104,9 +103,9 @@ class MyApp extends StatelessWidget {
                 SettingsController(persistence: settingsPersistence)
                   ..loadStateFromPersistence(),
           ),
-          Provider<StoreProvider>(
-            create: (context) => StoreProvider(),
-          ),
+          // Provider<StoreProvider>(
+          //   create: (context) => StoreProvider(),
+          // ),
           // ProxyProvider<StoreProvider, Questions>(
           //     lazy: false,
           //     create: (context) => Questions(),

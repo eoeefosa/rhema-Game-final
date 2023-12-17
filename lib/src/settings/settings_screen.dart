@@ -41,12 +41,10 @@ class SettingsScreen extends StatelessWidget {
           child: ListView(
             children: [
               // AppBarWidget(width: size.width * .8),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  GamePoint(),
-                ],
+              GamePoint(
+                color: palette.artipapercolor,
+                // shape: const s(),
+                elevation: 0,
               ),
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.end,
