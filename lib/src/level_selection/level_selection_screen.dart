@@ -9,8 +9,6 @@ import 'package:rhemabiblequiz/src/level_selection/provider/levelbook.dart';
 import 'package:rhemabiblequiz/src/player_progress/player_progress.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
-
-import '../store/provider/store_controller.dart';
 import 'components/level_card.dart';
 
 class LevelSelectionScreen extends StatelessWidget {

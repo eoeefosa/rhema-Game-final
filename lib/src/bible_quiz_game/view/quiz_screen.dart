@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/provider/questions.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/widgets/buttomoption.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/widgets/quiz_title_bar.dart';
-import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../../audio/audio_controller.dart';

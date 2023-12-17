@@ -5,7 +5,6 @@ import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../audio/audio_controller.dart';
 import '../audio/sounds.dart';
-import '../level_selection/components/level_screen_app_icon.dart';
 import 'settings_screen.dart';
 
 // class SettingsWidget extends StatelessWidget {

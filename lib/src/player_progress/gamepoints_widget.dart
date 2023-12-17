@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:rhemabiblequiz/src/level_selection/components/level_screen_app_icon.dart';
-import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../bible_quiz_game/constants.dart';

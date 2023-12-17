@@ -3,10 +3,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/data/question_data.dart';
 import 'package:rhemabiblequiz/src/bible_quiz_game/provider/storeprovider.dart';
-import 'package:rhemabiblequiz/src/store/provider/store_controller.dart';
 
 import '../model/question_model.dart';
 

@@ -7,6 +7,7 @@ class Palette {
   Color get inkFullOpacity => const Color(0xff352b42);
   Color get leveltext => const Color.fromRGBO(250, 235, 215, 1);
   Color get levelIcon => const Color.fromRGBO(47, 79, 79, 1);
+  Color get mainmenucolor => Colors.yellow.withOpacity(.2);
 
   Color get levelfaded => const Color.fromRGBO(250, 235, 215, 0.4);
 

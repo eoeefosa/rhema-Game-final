@@ -29,7 +29,7 @@ class MainMenuScreen extends StatelessWidget {
     const gap = SizedBox(height: 16);
     return Scaffold(
       body: MainMenuBackground(
-        color: Colors.yellow.withOpacity(.2),
+        color: palete.mainmenucolor,
         child: Column(
           children: [
             gap,

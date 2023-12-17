@@ -7,7 +7,6 @@ import 'package:rhemabiblequiz/src/settings/setting_widget.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../player_progress/gamepoints_widget.dart';
-import '../style/constants.dart';
 
 class AppBarWidget extends StatefulWidget {
   const AppBarWidget({

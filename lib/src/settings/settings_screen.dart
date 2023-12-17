@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:rhemabiblequiz/src/commons/appBar.dart';
 import 'package:rhemabiblequiz/src/settings/cutom_name_dialog.dart';
 import 'package:rhemabiblequiz/src/settings/settings.dart';
 import 'package:rhemabiblequiz/src/style/constants.dart';
@@ -33,7 +32,6 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
     final palette = context.watch<Palette>();
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: MainMenuBackground(
         child: Padding(
