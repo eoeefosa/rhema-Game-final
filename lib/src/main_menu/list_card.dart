@@ -14,7 +14,7 @@ class LIstcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    // final width = MediaQuery.of(context).size.width;
     final palette = context.watch<Palette>();
 
     return TextButton(

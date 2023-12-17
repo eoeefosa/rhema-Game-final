@@ -37,9 +37,9 @@ class MyPainter extends CustomPainter {
 class SmilyFaceDrawing extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final radius = min(size.width, size.height) / 2;
-    final center = Offset(size.height / 2, size.height / 2);
-
+    // final radius = min(size.width, size.height) / 2;
+    // final center = Offset(size.height / 2, size.height / 2);
+// 
     // TODO: implement paint
   }
 

@@ -8,7 +8,6 @@ import 'package:rhemabiblequiz/src/style/palette.dart';
 
 import '../../audio/audio_controller.dart';
 import '../../audio/sounds.dart';
-import '../../games_services/score.dart';
 import '../../player_progress/player_progress.dart';
 import '../../style/confetti.dart';
 import '../widgets/option_card.dart';
@@ -262,11 +261,11 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Future<void> _playerWon() async {
     print('Player won called in quiz screen');
-    final Score finScore = Score(
-      gamelevel,
-      3,
-      DateTime.now().difference(_startOfPlay),
-    );
+    // final Score finScore = Score(
+    //   gamelevel,
+    //   3,
+    //   DateTime.now().difference(_startOfPlay),
+    // );
 
     // final score = gameScore ?? 0;
     final playerProgress = context.read<PlayerProgress>();

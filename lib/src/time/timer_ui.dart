@@ -1,7 +1,6 @@
 import 'package:circular_progress_bar_with_lines/circular_progress_bar_with_lines.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rhemabiblequiz/src/style/constants.dart';
 import 'package:rhemabiblequiz/src/style/palette.dart';
 
 class TimerUi extends StatelessWidget {
