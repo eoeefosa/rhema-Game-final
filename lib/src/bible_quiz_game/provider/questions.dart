@@ -21,14 +21,23 @@ class Questions extends ChangeNotifier {
     addtimevalue: 10,
     hint: 2,
     adswatchvalue: 50,
-    clearwrongValaue: 2,
+    clearwrongValaue: 10,
   );
 
-  /// Storeprovider varables
-  // int _addtimevalue = 10;
-  // int _hint = 2;
-  // final int _adswatchvalue = 50;
-  // int _clearWrongValue = 2;
+  void buyTime(int value) {
+    int localAdtimevalue = _storeProvider.addtimevalue + value;
+    _storeProvider = _storeProvider.copyWith(addtimevalue: localAdtimevalue);
+  }
+
+  void buyclearWrongValue(int value) {
+    int localClearWrong = _storeProvider.clearwrongValaue + value;
+    _storeProvider = _storeProvider.copyWith(clearwrongValaue: localClearWrong);
+  }
+
+  void buyHint(int value) {
+    int localhint = _storeProvider.hint + value;
+    _storeProvider = _storeProvider.copyWith(hint: localhint);
+  }
 
   int get addTimerValue => _storeProvider.addtimevalue;
   int get clearWrongValue => _storeProvider.clearwrongValaue;
@@ -55,15 +64,40 @@ class Questions extends ChangeNotifier {
       _storeProvider =
           _storeProvider.copyWith(clearwrongValaue: localClearWrong);
 
-      options =
-          questions[currentLevel! * 4 + currentQuestionIndex].clear50().options;
-      notifyListeners();
+      // /get the current question index
+      // int myquestionIndex = currentQuestionIndex;
 
-      // TODO
+      List privateOptionIndex =
+          List.generate(currentQuestion.options.length, (index) => 10);
+      print("privateoptionindex: $privateOptionIndex");
+
+      // Get the currect answer
+      int prcorrectAnswerIndex =
+          currentQuestion.options.indexOf(currentQuestion.answer);
+      print("correctAnswerIndex $prcorrectAnswerIndex");
+      privateOptionIndex[prcorrectAnswerIndex] = prcorrectAnswerIndex;
+
+      // Get a list of indices of wrong options
+      List<int> indicesOfWrongOptions = privateOptionIndex
+          .asMap()
+          .entries
+          .where((entry) => entry.value != prcorrectAnswerIndex)
+          .map((entry) => entry.key)
+          .toList();
+
+      // Ensure there are at least two wrong options to clear
+      if (indicesOfWrongOptions.length >= 2) {
+        // Shuffle the list of wrong options
+        indicesOfWrongOptions.shuffle();
+      }
+      privateOptionIndex[indicesOfWrongOptions[0]] = indicesOfWrongOptions[0];
+
+      _clear5050option = privateOptionIndex;
+      notifyListeners();
     }
   }
 
-  late List<String>? options;
+  List _clear5050option = [];
 
   // final _question = currentQuestion;
   void usehint() {
@@ -100,7 +134,7 @@ class Questions extends ChangeNotifier {
   bool _isFinish = false;
   int currentScore = 0;
   int streak = 0;
-
+  List get clear5050option => _clear5050option;
   bool get isFinish => _isFinish;
 
   int get rightAnswers => _rightAnswers;
@@ -165,7 +199,7 @@ class Questions extends ChangeNotifier {
   }
 
   void rePlayLevel() {
-    options = null;
+    _clear5050option = [];
     notifyListeners();
     streak = 0;
 
@@ -200,7 +234,7 @@ class Questions extends ChangeNotifier {
   }
 
   void nextLevel() {
-    options = null;
+    _clear5050option = [];
 
     notifyListeners();
     final oldlevel = currentLevel;
@@ -236,10 +270,8 @@ class Questions extends ChangeNotifier {
   }
 
   void chooseLevel(int level) {
-    options = null;
+    _clear5050option = [];
 
-    // _isclear = false;
-    notifyListeners();
     streak = 0;
     currentScore = 0;
     seconds = 20;
@@ -301,7 +333,7 @@ class Questions extends ChangeNotifier {
   }
 
   void nextQuestion() {
-    options = null;
+    _clear5050option = [];
 
     // _isclear = false;
     notifyListeners();

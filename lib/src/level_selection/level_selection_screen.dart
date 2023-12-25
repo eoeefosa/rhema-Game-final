@@ -26,7 +26,6 @@ class LevelSelectionScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     const gap = SizedBox(height: 8);
     final levelbook = context.watch<LevelBook>();
-    // final StoreProvider storeProvider = context.watch<StoreProvider>();
 
     return Scaffold(
       backgroundColor: pallette.backgroundLevelSelection,
@@ -34,8 +33,6 @@ class LevelSelectionScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/wood.jpg"),
-            // colorFilter: ColorFilter.linearToSrgbGamma(),
-            // colorFilter: ColorFilter.srgbToLinearGamma(),
             fit: BoxFit.fill,
           ),
         ),
@@ -150,7 +147,6 @@ class LevelSelectionScreen extends StatelessWidget {
                                           playerProgress.highestLevelReached +
                                               1,
                                       onpressed: () {
-                                        // questions.attachStore(storeProvider);
                                         questions.chooseLevel(index);
                                         final audioController =
                                             context.read<AudioController>();

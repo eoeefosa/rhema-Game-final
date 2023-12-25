@@ -36,10 +36,11 @@ class _QuizScreenState extends State<QuizScreen> {
     final size = MediaQuery.of(context).size;
     const gap = SizedBox(height: 8);
 
-    final Questions question = context.watch<Questions>();
+    final question = context.watch<Questions>();
     gamelevel = question.currentLevel!;
     currentquestion = question.currentQuestionIndex;
     final pallete = context.watch<Palette>();
+    // bool isSelected = false;
 
     return BackGround(
       child: IgnorePointer(
@@ -101,41 +102,6 @@ class _QuizScreenState extends State<QuizScreen> {
                         const SizedBox(
                           height: 16,
                         ),
-                        // SizedBox(
-                        //   // height: 20,
-                        //   child: Column(
-                        //     children: [
-                        //       Text(
-                        //         'STREAK',
-                        //         style: TextStyle(
-                        //             color: question.streak >= 2
-                        //                 ? Colors.yellow[900]
-                        //                 : pallete.ink,
-                        //             fontSize: 12,
-                        //             fontFamily:
-                        //                 AppConstants.fontfamilypermenent),
-                        //       ),
-                        //       Row(
-                        //         mainAxisAlignment: MainAxisAlignment.center,
-                        //         children: [
-                        //           ...List.generate(
-                        //               4,
-                        //               (index) => Padding(
-                        //                     padding: const EdgeInsets.symmetric(
-                        //                         horizontal: 8.0),
-                        //                     child: Icon(
-                        //                       Icons.star_rate,
-                        //                       size: 20,
-                        //                       color: question.streak > index
-                        //                           ? Colors.yellow[900]
-                        //                           : pallete.ink,
-                        //                     ),
-                        //                   ))
-                        //         ],
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
                         const SizedBox(
                           height: 16,
                         ),
@@ -188,28 +154,27 @@ class _QuizScreenState extends State<QuizScreen> {
                         ...List.generate(
                           question.currentQuestion.options.length,
                           (index) {
-                            bool isSelected = false;
+                            // gameScore = question.currentScore;
+                            // question.updateCurrentLevelRating();
+                            // rightAnswer = question.rightAnswers;
+                            // question.chooseAnswer(index);
+
                             return Padding(
                               padding: EdgeInsets.all(gap.height!),
                               child: OptionCard(
-                                option: question.currentQuestion.options[index],
+                                option: question.clear5050option.isNotEmpty
+                                    ? question.clear5050option[index] == index
+                                        ? question
+                                            .currentQuestion.options[index]
+                                        : ""
+                                    : question.currentQuestion.options[index],
                                 answerCardStatus: question.answersStatus[index],
-                                onTap: () async {
-                                  gameScore = question.currentScore;
-                                  print('Game score = $gameScore');
-                                  question.updateCurrentLevelRating();
-                                  rightAnswer = question.rightAnswers;
-
-                                  if (!isSelected) {
-                                    question.chooseAnswer(index);
-                                  }
-                                  isSelected = true;
-                                  // // TODO: MAKE DYNAMIC
-                                  // await Future.delayed(
-                                  //     const Duration(milliseconds: 200));
-                                  // if (!question.isFinish) {
-                                  //   question.nextQuestion();
-                                  // }
+                                onTap: () {
+                                  question.clear5050option.isNotEmpty
+                                      ? question.clear5050option[index] == index
+                                          ? question.chooseAnswer(index)
+                                          : null
+                                      : question.chooseAnswer(index);
                                 },
                               ),
                             );
@@ -260,7 +225,6 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Future<void> _playerWon() async {
-    print('Player won called in quiz screen');
     // final Score finScore = Score(
     //   gamelevel,
     //   3,

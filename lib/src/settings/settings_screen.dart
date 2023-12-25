@@ -38,10 +38,8 @@ class SettingsScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: ListView(
             children: [
-              // AppBarWidget(width: size.width * .8),
               GamePoint(
                 color: palette.artipapercolor,
-                // shape: const s(),
                 elevation: 0,
               ),
               // Row(

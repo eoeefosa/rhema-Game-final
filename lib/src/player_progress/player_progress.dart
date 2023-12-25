@@ -45,6 +45,16 @@ class PlayerProgress extends ChangeNotifier {
     }
   }
 
+  void usedpoint(int removepoint) {
+    oldpoint = _points;
+    _points -= removepoint;
+    pointchange.value = _points;
+    // point=_points
+
+    notifyListeners();
+    unawaited(_store.savePoint(_points));
+  }
+
   PlayerProgress(PlayerProgressPersistence store) : _store = store;
 
   int get highestLevelReached => _highestLevelReached;

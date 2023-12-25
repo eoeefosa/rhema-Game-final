@@ -34,10 +34,11 @@ class AppRoutes {
                   GoRoute(
                       path: 'quiz_game',
                       pageBuilder: (context, state) {
-                        print("hellow");
                         context.watch<AudioController>().playgame();
                         return buildMyTransition(
-                          child: const QuizScreen(),
+                          child: const QuizScreen(
+                            key: Key("Quiz Game"),
+                          ),
                           color:
                               context.watch<Palette>().backgroundLevelSelection,
                         );
