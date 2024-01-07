@@ -467,7 +467,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "FALSE",
     "BR": "Genesis 13:13",
-    "level": 11
+    "level": 14
   },
   {
     "id": 65,
@@ -476,7 +476,7 @@ const questionsData = [
     "options": ["Size", "Wind", "Animals", "Dust"],
     "answer": "Dust",
     "BR": "Genesis 13:16",
-    "level": 11
+    "level": 15
   },
   {
     "id": 66,
@@ -485,7 +485,7 @@ const questionsData = [
     "options": ["Judah", "Egypt", "Elam", "Jericho"],
     "answer": "Elam",
     "BR": "Genesis 14:1",
-    "level": 11
+    "level": 15
   },
   {
     "id": 67,
@@ -493,7 +493,7 @@ const questionsData = [
     "options": ["Bera", "Abram", "Pharaoh", "Melchizedek"],
     "answer": "Bera",
     "BR": "Genesis 14:2",
-    "level": 11
+    "level": 15
   },
   {
     "id": 68,
@@ -501,7 +501,7 @@ const questionsData = [
     "options": ["400", "318", "314", "2000"],
     "answer": "318",
     "BR": "Genesis 14:14",
-    "level": 11
+    "level": 15
   },
   {
     "id": 69,
@@ -509,7 +509,7 @@ const questionsData = [
     "options": ["Lot", "Sarai", "Ishmael", "Terah"],
     "answer": "Lot",
     "BR": "Genesis 14:14",
-    "level": 11
+    "level": 16
   },
   {
     "id": 70,
@@ -517,7 +517,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 14:16",
-    "level": 11
+    "level": 16
   },
   {
     "id": 71,
@@ -526,7 +526,7 @@ const questionsData = [
     "options": ["Potiphar", "Ishmael", "Shem", "Melchizedek"],
     "answer": "Melchizedek",
     "BR": "Genesis 14:18-19",
-    "level": 11
+    "level": 16
   },
   {
     "id": 72,
@@ -534,7 +534,7 @@ const questionsData = [
     "options": ["Kadesh", "Salem", "Jericho", "Heaven"],
     "answer": "Salem",
     "BR": "Genesis 14:18",
-    "level": 11
+    "level": 16
   },
   {
     "id": 73,
@@ -542,7 +542,7 @@ const questionsData = [
     "options": ["Tithes", "Land", "Bread", "Water"],
     "answer": "Tithes",
     "BR": "Genesis 14:20",
-    "level": 11
+    "level": 16
   },
   {
     "id": 74,
@@ -551,7 +551,7 @@ const questionsData = [
     "options": ["Wealth", "Wisdom", "Righteousness", "Power"],
     "answer": "Righteousness",
     "BR": "Genesis 15:6",
-    "level": 11
+    "level": 16
   },
   {
     "id": 75,
@@ -559,7 +559,7 @@ const questionsData = [
     "options": ["Meturah", "Keturah", "Hagar", "Rachael"],
     "answer": "Hagar",
     "BR": "Genesis 16:3",
-    "level": 11
+    "level": 16
   },
   {
     "id": 76,
@@ -567,7 +567,7 @@ const questionsData = [
     "options": ["Canaan", "Egypt", "Sodom", "Ur"],
     "answer": "Egypt",
     "BR": "Genesis 16:1",
-    "level": 11
+    "level": 16
   },
   {
     "id": 77,
@@ -575,7 +575,7 @@ const questionsData = [
     "options": ["Her father", "The stream", "The garden", "The wilderness"],
     "answer": "The wilderness",
     "BR": "Genesis 16:6-7",
-    "level": 11
+    "level": 16
   },
   {
     "id": 78,
@@ -583,7 +583,7 @@ const questionsData = [
     "options": ["Abram", "An angel", "Sarai", "Ishmael"],
     "answer": "An angel",
     "BR": "Genesis 16:6-7",
-    "level": 11
+    "level": 16
   },
   {
     "id": 79,
@@ -591,7 +591,7 @@ const questionsData = [
     "options": ["Sarai", "Abram", "Hagar", "Keturah"],
     "answer": "Abram",
     "BR": "Genesis 16:15",
-    "level": 11
+    "level": 17
   },
   {
     "id": 80,
@@ -599,7 +599,7 @@ const questionsData = [
     "options": ["90 years", "99 years", "85 years", "86 years"],
     "answer": "86 years",
     "BR": "Genesis 16:16",
-    "level": 11
+    "level": 17
   },
   {
     "id": 81,
@@ -608,7 +608,7 @@ const questionsData = [
     "options": ["Twelve", "Twenty", "Nine", "Ten"],
     "answer": "Twelve",
     "BR": "Genesis 17:20",
-    "level": 11
+    "level": 17
   },
   {
     "id": 82,
@@ -617,7 +617,7 @@ const questionsData = [
     "options": ["Perfect", "Happy", "Wise", "Powerful"],
     "answer": "Perfect",
     "BR": "Genesis 17:1",
-    "level": 11
+    "level": 17
   },
   {
     "id": 83,
@@ -625,7 +625,7 @@ const questionsData = [
     "options": ["Children", "Sons", "Nations", "Priests"],
     "answer": "Nations",
     "BR": "Genesis 17:5",
-    "level": 11
+    "level": 18
   },
   {
     "id": 84,
@@ -633,7 +633,7 @@ const questionsData = [
     "options": ["A covenant", "A Battle", "A temple", "The law"],
     "answer": "A covenant",
     "BR": "Genesis 17:7",
-    "level": 11
+    "level": 18
   },
   {
     "id": 85,
@@ -641,7 +641,7 @@ const questionsData = [
     "options": ["Abraham", "Abramah", "Israel", "Ephraim"],
     "answer": "Abraham",
     "BR": "Genesis 17:5",
-    "level": 11
+    "level": 18
   },
   {
     "id": 86,
@@ -649,7 +649,7 @@ const questionsData = [
     "options": ["Pentecost", "Passover", "Circumcision", "Supper"],
     "answer": "Circumcision",
     "BR": "Genesis 17:10",
-    "level": 12
+    "level": 18
   },
   {
     "id": 87,
@@ -658,7 +658,7 @@ const questionsData = [
     "options": ["10 years", "10 days", "5 days", "8 days"],
     "answer": "8 days",
     "BR": "Genesis 17:12",
-    "level": 12
+    "level": 19
   },
   {
     "id": 88,
@@ -666,7 +666,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 17:12",
-    "level": 12
+    "level": 19
   },
   {
     "id": 89,
@@ -674,7 +674,7 @@ const questionsData = [
     "options": ["Sarel", "Sarah", "Hagar", "Keturah"],
     "answer": "Sarah",
     "BR": "Genesis 17:15",
-    "level": 12
+    "level": 19
   },
   {
     "id": 90,
@@ -683,7 +683,7 @@ const questionsData = [
     "options": ["He danced", "He feared", "He believed", "He laughed"],
     "answer": "He laughed",
     "BR": "Genesis 17:17",
-    "level": 12
+    "level": 19
   },
   {
     "id": 91,
@@ -691,7 +691,7 @@ const questionsData = [
     "options": ["Midian", "Medan", "Ishmael", "Isaac"],
     "answer": "Isaac",
     "BR": "Genesis 17:21",
-    "level": 12
+    "level": 20
   },
   {
     "id": 92,
@@ -699,7 +699,7 @@ const questionsData = [
     "options": ["12 years", "13 years", "15 days", "8 days"],
     "answer": "13 years",
     "BR": "Genesis 17:25",
-    "level": 12
+    "level": 20
   },
   {
     "id": 93,
@@ -708,7 +708,7 @@ const questionsData = [
     "options": ["Three", "Seven", "Six", "Ten"],
     "answer": "Three",
     "BR": "Genesis 18:2",
-    "level": 12
+    "level": 20
   },
   {
     "id": 94,
@@ -717,7 +717,7 @@ const questionsData = [
     "options": ["In his house", "In his tent", "Under a tree", "On his donkey"],
     "answer": "Under a tree",
     "BR": "Genesis 18:4",
-    "level": 12
+    "level": 20
   },
   {
     "id": 95,
@@ -726,7 +726,7 @@ const questionsData = [
     "options": ["A donkey", "A goat", "A deer", "A calf"],
     "answer": "A calf",
     "BR": "Genesis 18:8",
-    "level": 12
+    "level": 21
   },
   {
     "id": 96,
@@ -734,7 +734,7 @@ const questionsData = [
     "options": ["She rejoiced", "She laughed", "She smiled", "She worshipped"],
     "answer": "She laughed",
     "BR": "Genesis 18:12",
-    "level": 12
+    "level": 21
   },
   {
     "id": 97,
@@ -743,7 +743,7 @@ const questionsData = [
     "options": ["Kadesh", "Gomorrah", "Babel", "Jordan"],
     "answer": "Gomorrah",
     "BR": "Genesis 19",
-    "level": 12
+    "level": 21
   },
   {
     "id": 98,
@@ -752,7 +752,7 @@ const questionsData = [
     "options": ["Two", "Six", "Seven", "Two"],
     "answer": "Two",
     "BR": "Genesis 19:1",
-    "level": 12
+    "level": 21
   },
   {
     "id": 99,
@@ -760,7 +760,7 @@ const questionsData = [
     "options": ["City gate", "Market", "Wilderness", "River"],
     "answer": "City gate",
     "BR": "Genesis 19:1",
-    "level": 12
+    "level": 22
   },
   {
     "id": 100,
@@ -768,7 +768,7 @@ const questionsData = [
     "options": ["Three", "Two", "Six", "Seven"],
     "answer": "Two",
     "BR": "Genesis 19:8",
-    "level": 12
+    "level": 22
   },
   {
     "id": 101,
@@ -776,7 +776,7 @@ const questionsData = [
     "options": ["Three", "Seven", "Ten", "Two"],
     "answer": "Three",
     "BR": "Genesis 19:16",
-    "level": 12
+    "level": 22
   },
   {
     "id": 102,
@@ -789,7 +789,7 @@ const questionsData = [
     ],
     "answer": "Angels brought them out",
     "BR": "Genesis 19:16",
-    "level": 12
+    "level": 22
   },
   {
     "id": 103,
@@ -797,7 +797,7 @@ const questionsData = [
     "options": ["Laugh", "Doubt", "Stop", "Look back"],
     "answer": "Look back",
     "BR": "Genesis 19:17",
-    "level": 12
+    "level": 23
   },
   {
     "id": 104,
@@ -805,7 +805,7 @@ const questionsData = [
     "options": ["Ephraim", "Mahanaim", "Zoar", "Hannoch"],
     "answer": "Zoar",
     "BR": "Genesis 19:22",
-    "level": 12
+    "level": 23
   },
   {
     "id": 105,
@@ -813,7 +813,7 @@ const questionsData = [
     "options": ["Sulphur", "Brimstone", "Water", "Rain"],
     "answer": "Brimstone",
     "BR": "Genesis 19:24",
-    "level": 12
+    "level": 23
   },
   {
     "id": 106,
@@ -822,7 +822,7 @@ const questionsData = [
     "options": ["Fire", "Cloud", "Brimstone", "Salt"],
     "answer": "Salt",
     "BR": "Genesis 19:26",
-    "level": 12
+    "level": 23
   },
   {
     "id": 107,
@@ -831,7 +831,7 @@ const questionsData = [
     "options": ["Cave", "Desert", "Wilderness", "River"],
     "answer": "Cave",
     "BR": "Genesis 19:30",
-    "level": 12
+    "level": 24
   },
   {
     "id": 108,
@@ -840,7 +840,7 @@ const questionsData = [
     "options": ["Ammon", "Laban", "Edom", "Moab"],
     "answer": "Moab",
     "BR": "Genesis 19:37",
-    "level": 12
+    "level": 24
   },
   {
     "id": 109,
@@ -848,7 +848,7 @@ const questionsData = [
     "options": ["Moriah", "Gerar", "Jericho", "Moab"],
     "answer": "Gerar",
     "BR": "Genesis 20:2",
-    "level": 12
+    "level": 24
   },
   {
     "id": 110,
@@ -856,7 +856,7 @@ const questionsData = [
     "options": ["David", "Solomon", "Abimelech", "Elimelech"],
     "answer": "Abimelech",
     "BR": "Genesis 20:2",
-    "level": 12
+    "level": 24
   },
   {
     "id": 111,
@@ -865,7 +865,7 @@ const questionsData = [
     "options": ["Wise", "Brave", "Dead", "Foolish"],
     "answer": "Dead",
     "BR": "Genesis 20:3",
-    "level": 12
+    "level": 25
   },
   {
     "id": 112,
@@ -873,7 +873,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 20:12",
-    "level": 12
+    "level": 25
   },
   {
     "id": 113,
@@ -882,7 +882,7 @@ const questionsData = [
     "options": ["100", "30", "10000", "1000"],
     "answer": "1000",
     "BR": "Genesis 20:16",
-    "level": 12
+    "level": 25
   },
   {
     "id": 114,
@@ -891,7 +891,7 @@ const questionsData = [
     "options": ["Barren", "Blind", "Lame", "Repent"],
     "answer": "Barren",
     "BR": "Genesis 20:18",
-    "level": 12
+    "level": 25
   },
   {
     "id": 115,
@@ -899,7 +899,7 @@ const questionsData = [
     "options": ["75 years", "100 years", "70 years", "90 years"],
     "answer": "100 years",
     "BR": "Genesis 21:5",
-    "level": 12
+    "level": 26
   },
   {
     "id": 116,
@@ -907,7 +907,7 @@ const questionsData = [
     "options": ["8 years", "8 days", "7 days", "1 year"],
     "answer": "8 days",
     "BR": "Genesis 21:4",
-    "level": 12
+    "level": 26
   },
   {
     "id": 117,
@@ -916,7 +916,7 @@ const questionsData = [
     "options": ["Born", "Dedicated", "Weaned", "Circumcised"],
     "answer": "Weaned",
     "BR": "Genesis 21:8",
-    "level": 12
+    "level": 26
   },
   {
     "id": 118,
@@ -924,7 +924,7 @@ const questionsData = [
     "options": ["Dancing", "Weeping", "Feasting", "Mocking"],
     "answer": "Mocking",
     "BR": "Genesis 21:9",
-    "level": 12
+    "level": 26
   },
   {
     "id": 119,
@@ -932,7 +932,7 @@ const questionsData = [
     "options": ["Praised", "Sent away", "Thanked", "Mocked"],
     "answer": "Sent away",
     "BR": "Genesis 21:14",
-    "level": 12
+    "level": 27
   },
   {
     "id": 120,
@@ -941,7 +941,7 @@ const questionsData = [
     "options": ["Mahanaim", "Laban", "Lebanon", "Beersheba"],
     "answer": "Beersheba",
     "BR": "Genesis 21:14",
-    "level": 12
+    "level": 27
   },
   {
     "id": 121,
@@ -949,7 +949,7 @@ const questionsData = [
     "options": ["Bread and water", "Sheep", "Servants", "Silver"],
     "answer": "Bread and water",
     "BR": "Genesis 21:14",
-    "level": 12
+    "level": 27
   },
   {
     "id": 122,
@@ -957,7 +957,7 @@ const questionsData = [
     "options": ["Painter", "Archer", "Farmer", "Dancer"],
     "answer": "Archer",
     "BR": "Genesis 21:20",
-    "level": 12
+    "level": 27
   },
   {
     "id": 123,
@@ -965,7 +965,7 @@ const questionsData = [
     "options": ["Canaan", "Egypt", "Gerar", "Goshen"],
     "answer": "Egypt",
     "BR": "Genesis 21:21",
-    "level": 12
+    "level": 28
   },
   {
     "id": 124,
@@ -974,7 +974,7 @@ const questionsData = [
     "options": ["Wife", "Daughter", "Father", "Son"],
     "answer": "Son",
     "BR": "Genesis 22:2",
-    "level": 12
+    "level": 28
   },
   {
     "id": 125,
@@ -983,7 +983,7 @@ const questionsData = [
     "options": ["Torah", "Seir", "Moriah", "Moab"],
     "answer": "Moriah",
     "BR": "Genesis 22:2",
-    "level": 12
+    "level": 28
   },
   {
     "id": 126,
@@ -992,7 +992,7 @@ const questionsData = [
     "options": ["Twelve", "Two", "Ten", "Three"],
     "answer": "Two",
     "BR": "Genesis 22:3",
-    "level": 12
+    "level": 28
   },
   {
     "id": 127,
@@ -1001,7 +1001,7 @@ const questionsData = [
     "options": ["Three days", "Ten days", "Two days", "Five days"],
     "answer": "Three days",
     "BR": "Genesis 22:4",
-    "level": 12
+    "level": 29
   },
   {
     "id": 128,
@@ -1010,7 +1010,7 @@ const questionsData = [
     "options": ["Goat", "Camel", "Bull", "Ram"],
     "answer": "Ram",
     "BR": "Genesis 22:13",
-    "level": 12
+    "level": 29
   },
   {
     "id": 129,
@@ -1024,7 +1024,7 @@ const questionsData = [
     ],
     "answer": "Jehovah Jireh",
     "BR": "Genesis 22:13-14",
-    "level": 12
+    "level": 29
   },
   {
     "id": 130,
@@ -1038,7 +1038,7 @@ const questionsData = [
     ],
     "answer": "Stars of Heaven",
     "BR": "Genesis 22:17",
-    "level": 12
+    "level": 29
   },
   {
     "id": 131,
@@ -1046,7 +1046,7 @@ const questionsData = [
     "options": ["130 years", "150 years", "127 years", "99 years"],
     "answer": "127 years",
     "BR": "Genesis 23:1",
-    "level": 12
+    "level": 30
   },
   {
     "id": 132,
@@ -1054,7 +1054,7 @@ const questionsData = [
     "options": ["Hebron", "Egypt", "Jordan", "Babylon"],
     "answer": "Hebron",
     "BR": "Genesis 23:2",
-    "level": 12
+    "level": 30
   },
   {
     "id": 133,
@@ -1062,7 +1062,7 @@ const questionsData = [
     "options": ["Mamre", "Machpelah", "Zoar", "Gilgal"],
     "answer": "Machpelah",
     "BR": "Genesis 23:19",
-    "level": 12
+    "level": 30
   },
   {
     "id": 134,
@@ -1071,7 +1071,7 @@ const questionsData = [
     "options": ["Hagith", "Hananai", "Jehoram", "Ephron"],
     "answer": "Ephron",
     "BR": "Genesis 23:16",
-    "level": 12
+    "level": 30
   },
   {
     "id": 135,
@@ -1080,7 +1080,7 @@ const questionsData = [
     "options": ["300", "400", "450", "250"],
     "answer": "400",
     "BR": "Genesis 23:16",
-    "level": 12
+    "level": 31
   },
   {
     "id": 136,
@@ -1088,7 +1088,7 @@ const questionsData = [
     "options": ["Kibosh", "Kirjatharba", "Sinai", "Goshen"],
     "answer": "Kirjatharba",
     "BR": "Genesis 23:2",
-    "level": 12
+    "level": 31
   },
   {
     "id": 137,
@@ -1096,7 +1096,7 @@ const questionsData = [
     "options": ["Sarah", "Ishmael", "A servant", "Keturah"],
     "answer": "A servant",
     "BR": "Genesis 24:10",
-    "level": 12
+    "level": 31
   },
   {
     "id": 138,
@@ -1104,7 +1104,7 @@ const questionsData = [
     "options": ["Mesopotamia", "Nazareth", "Horeb", "Canaan"],
     "answer": "Mesopotamia",
     "BR": "Genesis 24:10",
-    "level": 12
+    "level": 31
   },
   {
     "id": 139,
@@ -1113,7 +1113,7 @@ const questionsData = [
     "options": ["1000", "10000", "100", "10"],
     "answer": "10",
     "BR": "Genesis 24:10",
-    "level": 12
+    "level": 32
   },
   {
     "id": 140,
@@ -1122,7 +1122,7 @@ const questionsData = [
     "options": ["Greet him", "Pass by", "Give him food", "Give him water"],
     "answer": "Give him water",
     "BR": "Genesis 24:14",
-    "level": 12
+    "level": 32
   },
   {
     "id": 141,
@@ -1131,7 +1131,7 @@ const questionsData = [
     "options": ["Rachael", "Rebekah", "Mary", "Keturah"],
     "answer": "Rebekah",
     "BR": "Genesis 24:15",
-    "level": 12
+    "level": 32
   },
   {
     "id": 142,
@@ -1139,7 +1139,7 @@ const questionsData = [
     "options": ["Laban", "Milkah", "Bethuel", "Simon"],
     "answer": "Bethuel",
     "BR": "Genesis 24:15",
-    "level": 12
+    "level": 32
   },
   {
     "id": 143,
@@ -1148,7 +1148,7 @@ const questionsData = [
     "options": ["Cattle", "Camels", "Children", "Wives"],
     "answer": "Camels",
     "BR": "Genesis 24:19",
-    "level": 12
+    "level": 33
   },
   {
     "id": 144,
@@ -1156,7 +1156,7 @@ const questionsData = [
     "options": ["An earring", "A camel", "Land", "Silver"],
     "answer": "An earring",
     "BR": "Genesis 24:22",
-    "level": 12
+    "level": 33
   },
   {
     "id": 145,
@@ -1164,7 +1164,7 @@ const questionsData = [
     "options": ["Shechem", "Bethuel", "Milcah", "Laban"],
     "answer": "Laban",
     "BR": "Genesis 24:29",
-    "level": 12
+    "level": 33
   },
   {
     "id": 146,
@@ -1173,7 +1173,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 24:55-58",
-    "level": 12
+    "level": 33
   },
   {
     "id": 147,
@@ -1182,7 +1182,7 @@ const questionsData = [
     "options": ["Father", "Nurse", "Sister", "Brother"],
     "answer": "Nurse",
     "BR": "Genesis 24:59",
-    "level": 12
+    "level": 34
   },
   {
     "id": 148,
@@ -1191,7 +1191,7 @@ const questionsData = [
     "options": ["Gate", "Horn", "Riches", "Possession"],
     "answer": "Gate",
     "BR": "Genesis 24:60",
-    "level": 12
+    "level": 34
   },
   {
     "id": 149,
@@ -1200,7 +1200,7 @@ const questionsData = [
     "options": ["Working", "Praying", "Meditating", "Playing"],
     "answer": "Meditating",
     "BR": "Genesis 24:63",
-    "level": 12
+    "level": 34
   },
   {
     "id": 150,
@@ -1209,7 +1209,7 @@ const questionsData = [
     "options": ["Hagar", "Keturah", "Asenath", "Rachael"],
     "answer": "Keturah",
     "BR": "Genesis 25:1",
-    "level": 12
+    "level": 34
   },
   {
     "id": 151,
@@ -1217,7 +1217,7 @@ const questionsData = [
     "options": ["Ten", "Three", "Six", "Two"],
     "answer": "Six",
     "BR": "Genesis 25:1-2",
-    "level": 12
+    "level": 35
   },
   {
     "id": 152,
@@ -1225,7 +1225,7 @@ const questionsData = [
     "options": ["Zimran", "Medan", "Midian", "Ithamar"],
     "answer": "Ithamar",
     "BR": "Genesis 25:1-2",
-    "level": 12
+    "level": 35
   },
   {
     "id": 153,
@@ -1234,7 +1234,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "FALSE",
     "BR": "Genesis 25:5-6",
-    "level": 12
+    "level": 35
   },
   {
     "id": 154,
@@ -1242,7 +1242,7 @@ const questionsData = [
     "options": ["160 years", "120 years", "175 years", "170 years"],
     "answer": "175 years",
     "BR": "Genesis 25:7",
-    "level": 12
+    "level": 35
   },
   {
     "id": 155,
@@ -1250,7 +1250,7 @@ const questionsData = [
     "options": ["Ishmael and Isaac", "Isaac", "Ishmael", "Keturah"],
     "answer": "Ishmael and Isaac",
     "BR": "Genesis 25:9",
-    "level": 12
+    "level": 36
   },
   {
     "id": 156,
@@ -1258,7 +1258,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 25:9-10",
-    "level": 12
+    "level": 36
   },
   {
     "id": 157,
@@ -1266,7 +1266,7 @@ const questionsData = [
     "options": ["100", "400", "137", "157"],
     "answer": "137",
     "BR": "Genesis 25:17",
-    "level": 12
+    "level": 36
   },
   {
     "id": 158,
@@ -1274,7 +1274,7 @@ const questionsData = [
     "options": ["50 years", "40 years", "35 years", "45 years"],
     "answer": "40 years",
     "BR": "Genesis 25:20",
-    "level": 12
+    "level": 36
   },
   {
     "id": 159,
@@ -1283,7 +1283,7 @@ const questionsData = [
     "options": ["Esau", "Pharez", "Zara", "Simon"],
     "answer": "Esau",
     "BR": "Genesis 25:25-26",
-    "level": 12
+    "level": 37
   },
   {
     "id": 160,
@@ -1292,7 +1292,7 @@ const questionsData = [
     "options": ["The Lord", "The parents", "The devil", "The younger"],
     "answer": "The younger",
     "BR": "Genesis 25:23",
-    "level": 12
+    "level": 37
   },
   {
     "id": 161,
@@ -1300,7 +1300,7 @@ const questionsData = [
     "options": ["Handsome", "Hairy", "Big", "Blue"],
     "answer": "Hairy",
     "BR": "Genesis 25:25",
-    "level": 12
+    "level": 37
   },
   {
     "id": 162,
@@ -1308,7 +1308,7 @@ const questionsData = [
     "options": ["Hair", "Neck", "Elbow", "Heel"],
     "answer": "Heel",
     "BR": "Genesis 25:26",
-    "level": 12
+    "level": 37
   },
   {
     "id": 163,
@@ -1317,7 +1317,7 @@ const questionsData = [
     "options": ["20 years", "9 months", "10 years", "15 years"],
     "answer": "20 years",
     "BR": "Genesis 25:26",
-    "level": 12
+    "level": 38
   },
   {
     "id": 164,
@@ -1325,7 +1325,7 @@ const questionsData = [
     "options": ["Farmer", "Hunter", "Player", "Shepherd"],
     "answer": "Hunter",
     "BR": "Genesis 25:27",
-    "level": 12
+    "level": 38
   },
   {
     "id": 165,
@@ -1333,7 +1333,7 @@ const questionsData = [
     "options": ["Esau", "Jacob"],
     "answer": "Esau",
     "BR": "Genesis 25:28",
-    "level": 12
+    "level": 38
   },
   {
     "id": 166,
@@ -1341,7 +1341,7 @@ const questionsData = [
     "options": ["Wine", "Water", "Honey", "Pottage"],
     "answer": "Pottage",
     "BR": "Genesis 25:30",
-    "level": 12
+    "level": 38
   },
   {
     "id": 167,
@@ -1349,7 +1349,7 @@ const questionsData = [
     "options": ["Egyptians", "Philistines", "Ishmaelites", "Midianites"],
     "answer": "Philistines",
     "BR": "Genesis 26:14",
-    "level": 12
+    "level": 39
   },
   {
     "id": 168,
@@ -1357,7 +1357,7 @@ const questionsData = [
     "options": ["Valley", "Mountain", "Well", "City"],
     "answer": "Well",
     "BR": "Genesis 26:22",
-    "level": 12
+    "level": 39
   },
   {
     "id": 169,
@@ -1365,7 +1365,7 @@ const questionsData = [
     "options": ["Judith", "Jubaal", "Asemah", "Anioleth"],
     "answer": "Judith",
     "BR": "Genesis 26:34",
-    "level": 12
+    "level": 39
   },
   {
     "id": 170,
@@ -1374,7 +1374,7 @@ const questionsData = [
     "options": ["Jacob", "Esau"],
     "answer": "Esau",
     "BR": "Genesis 27:1-4",
-    "level": 12
+    "level": 39
   },
   {
     "id": 171,
@@ -1383,7 +1383,7 @@ const questionsData = [
     "options": ["Rebekah", "Jacob", "Himself", "Isaac"],
     "answer": "Rebekah",
     "BR": "Genesis 27",
-    "level": 12
+    "level": 40
   },
   {
     "id": 172,
@@ -1391,7 +1391,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 27:15",
-    "level": 12
+    "level": 40
   },
   {
     "id": 173,
@@ -1400,7 +1400,7 @@ const questionsData = [
     "options": ["Camel skin", "Horse skin", "Goat skin", "Sheep skin"],
     "answer": "Goat skin",
     "BR": "Genesis 27:16",
-    "level": 12
+    "level": 40
   },
   {
     "id": 174,
@@ -1409,7 +1409,7 @@ const questionsData = [
     "options": ["Favour", "Angels", "Blessings", "Dew"],
     "answer": "Dew",
     "BR": "Genesis 27:28",
-    "level": 12
+    "level": 40
   },
   {
     "id": 175,
@@ -1418,7 +1418,7 @@ const questionsData = [
     "options": ["Forgive", "Beat", "Kill", "Fight"],
     "answer": "Kill",
     "BR": "Genesis 27:41",
-    "level": 12
+    "level": 41
   },
   {
     "id": 176,
@@ -1426,7 +1426,7 @@ const questionsData = [
     "options": ["Faith", "The sword", "Fear", "Thy labour"],
     "answer": "The sword",
     "BR": "Genesis 27:40",
-    "level": 12
+    "level": 41
   },
   {
     "id": 177,
@@ -1435,7 +1435,7 @@ const questionsData = [
     "options": ["Namath", "Horeb", "Haran", "Shiloh"],
     "answer": "Haran",
     "BR": "Genesis 27:43",
-    "level": 12
+    "level": 41
   },
   {
     "id": 178,
@@ -1443,7 +1443,7 @@ const questionsData = [
     "options": ["His friend", "His uncle", "His cousin", "No one"],
     "answer": "His uncle",
     "BR": "Genesis 27:43",
-    "level": 12
+    "level": 41
   },
   {
     "id": 179,
@@ -1452,7 +1452,7 @@ const questionsData = [
     "options": ["Canaan", "Haran", "Mesopotamia", "Bethel"],
     "answer": "Canaan",
     "BR": "Genesis 28:1",
-    "level": 12
+    "level": 42
   },
   {
     "id": 180,
@@ -1461,7 +1461,7 @@ const questionsData = [
     "options": ["Bethel", "Peniel", "Beersheba", "Dan"],
     "answer": "Bethel",
     "BR": "Genesis 28:19",
-    "level": 12
+    "level": 42
   },
   {
     "id": 181,
@@ -1470,7 +1470,7 @@ const questionsData = [
     "options": ["Men", "Beasts", "Angels", "Clouds"],
     "answer": "Angels",
     "BR": "Genesis 28:12",
-    "level": 12
+    "level": 42
   },
   {
     "id": 182,
@@ -1479,7 +1479,7 @@ const questionsData = [
     "options": ["Leah", "Laban", "Bilhah", "Rachael"],
     "answer": "Rachael",
     "BR": "Genesis 29:10",
-    "level": 12
+    "level": 42
   },
   {
     "id": 183,
@@ -1487,7 +1487,7 @@ const questionsData = [
     "options": ["River", "Slaughter", "Well", "Garden"],
     "answer": "Well",
     "BR": "Genesis 29:10-11",
-    "level": 12
+    "level": 43
   },
   {
     "id": 184,
@@ -1495,7 +1495,7 @@ const questionsData = [
     "options": ["Wept", "Laughed", "Danced", "Worshipped"],
     "answer": "Wept",
     "BR": "Genesis 29:11",
-    "level": 12
+    "level": 43
   },
   {
     "id": 185,
@@ -1503,7 +1503,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 29:13",
-    "level": 12
+    "level": 43
   },
   {
     "id": 186,
@@ -1511,7 +1511,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 29:16",
-    "level": 12
+    "level": 43
   },
   {
     "id": 187,
@@ -1519,7 +1519,7 @@ const questionsData = [
     "options": ["Leah", "Rachael", "Zilpah", "Bilhah"],
     "answer": "Leah",
     "BR": "Genesis 29:16",
-    "level": 12
+    "level": 44
   },
   {
     "id": 188,
@@ -1527,7 +1527,7 @@ const questionsData = [
     "options": ["Leah", "Rachael"],
     "answer": "Leah",
     "BR": "Genesis 29:17",
-    "level": 12
+    "level": 44
   },
   {
     "id": 189,
@@ -1536,7 +1536,7 @@ const questionsData = [
     "options": ["Twelve", "Seven", "Three", "Six"],
     "answer": "Seven",
     "BR": "Genesis 29:18",
-    "level": 12
+    "level": 44
   },
   {
     "id": 190,
@@ -1545,7 +1545,7 @@ const questionsData = [
     "options": ["Leah", "Bilhah", "Zilpah", "Rachael"],
     "answer": "Rachael",
     "BR": "Genesis 29:23",
-    "level": 12
+    "level": 44
   },
   {
     "id": 191,
@@ -1553,7 +1553,7 @@ const questionsData = [
     "options": ["Bilhah", "Zilpah", "Deborah", "Dinah"],
     "answer": "Bilhah",
     "BR": "Genesis 29:24",
-    "level": 12
+    "level": 45
   },
   {
     "id": 192,
@@ -1561,7 +1561,7 @@ const questionsData = [
     "options": ["Levi", "Simeon", "Reuben", "Judah"],
     "answer": "Reuben",
     "BR": "Genesis 29:32",
-    "level": 12
+    "level": 45
   },
   {
     "id": 193,
@@ -1570,7 +1570,7 @@ const questionsData = [
     "options": ["Issachar", "Levi", "Judah", "Reuben"],
     "answer": "Judah",
     "BR": "Genesis 29:35",
-    "level": 12
+    "level": 45
   },
   {
     "id": 194,
@@ -1578,7 +1578,7 @@ const questionsData = [
     "options": ["Three", "Ten", "Four", "Two"],
     "answer": "Two",
     "BR": "Genesis 30:5-8",
-    "level": 12
+    "level": 45
   },
   {
     "id": 195,
@@ -1586,7 +1586,7 @@ const questionsData = [
     "options": ["Six", "Four", "Ten", "Seven"],
     "answer": "Seven",
     "BR": "Genesis 30:20-21",
-    "level": 12
+    "level": 45
   },
   {
     "id": 196,
@@ -1594,7 +1594,7 @@ const questionsData = [
     "options": ["Rachael", "Leah", "Bilhah", "Zilpah"],
     "answer": "Rachael",
     "BR": "Genesis 30:20-21",
-    "level": 12
+    "level": 46
   },
   {
     "id": 197,
@@ -1602,7 +1602,7 @@ const questionsData = [
     "options": ["Diana", "Dinah", "Asshur", "Salome"],
     "answer": "Dinah",
     "BR": "Genesis 30:21",
-    "level": 12
+    "level": 46
   },
   {
     "id": 198,
@@ -1611,7 +1611,7 @@ const questionsData = [
     "options": ["Joseph", "Benjamin", "Dinah", "Asher"],
     "answer": "Joseph",
     "BR": "Genesis 30:25-26",
-    "level": 12
+    "level": 46
   },
   {
     "id": 199,
@@ -1620,7 +1620,7 @@ const questionsData = [
     "options": ["TRUE", "FALSE"],
     "answer": "TRUE",
     "BR": "Genesis 31:20",
-    "level": 12
+    "level": 46
   },
   {
     "id": 200,
@@ -1628,7 +1628,7 @@ const questionsData = [
     "options": ["Ten", "Six", "Four", "Three"],
     "answer": "Three",
     "BR": "Genesis 31:22",
-    "level": 12
+    "level": 47
   },
   {
     "id": 201,
@@ -1636,7 +1636,7 @@ const questionsData = [
     "options": ["Curse", "Kill", "Pursue", "Leave"],
     "answer": "Pursue",
     "BR": "Genesis 31:23",
-    "level": 12
+    "level": 47
   },
   {
     "id": 202,
@@ -1644,7 +1644,7 @@ const questionsData = [
     "options": ["Six days", "Three days", "2 days", "One night"],
     "answer": "Three days",
     "BR": "Genesis 31:23",
-    "level": 12
+    "level": 47
   },
   {
     "id": 203,
@@ -1652,7 +1652,7 @@ const questionsData = [
     "options": ["Jacob", "Leah", "Rachael", "Reuben"],
     "answer": "Rachael",
     "BR": "Genesis 31:32",
-    "level": 12
+    "level": 47
   },
   {
     "id": 204,
@@ -1660,7 +1660,7 @@ const questionsData = [
     "options": ["Seven", "Fourteen", "Twelve", "Twenty"],
     "answer": "Twenty",
     "BR": "Genesis 31:41",
-    "level": 12
+    "level": 48
   },
   {
     "id": 205,
@@ -1669,7 +1669,7 @@ const questionsData = [
     "options": ["Mahanaim", "Hebron", "Horeb", "Galeed"],
     "answer": "Mahanaim",
     "BR": "Genesis 32:1-2",
-    "level": 12
+    "level": 48
   },
   {
     "id": 206,
@@ -1677,7 +1677,7 @@ const questionsData = [
     "options": ["Esau", "Rachael", "Isaac", "Rebekah"],
     "answer": "Esau",
     "BR": "Genesis 32",
-    "level": 12
+    "level": 48
   },
   {
     "id": 207,
@@ -1685,7 +1685,7 @@ const questionsData = [
     "options": ["300", "600", "200", "400"],
     "answer": "400",
     "BR": "Genesis 32:6",
-    "level": 12
+    "level": 48
   },
   {
     "id": 208,
@@ -1693,7 +1693,7 @@ const questionsData = [
     "options": ["Animals", "Gold", "Silver", "Servants"],
     "answer": "Animals",
     "BR": "Genesis 32:14-15",
-    "level": 12
+    "level": 49
   },
   {
     "id": 209,
@@ -1702,7 +1702,7 @@ const questionsData = [
     "options": ["Bethel", "Peniel", "Kadesh", "Gilead"],
     "answer": "Peniel",
     "BR": "Genesis 32:30",
-    "level": 12
+    "level": 49
   },
   {
     "id": 210,
@@ -1711,7 +1711,7 @@ const questionsData = [
     "options": ["Help", "Follow", "Bless", "Remember"],
     "answer": "Bless",
     "BR": "Genesis 32:26",
-    "level": 12
+    "level": 49
   },
   {
     "id": 211,
@@ -1719,7 +1719,7 @@ const questionsData = [
     "options": ["Ruach", "Zion", "Ephraim", "Israel"],
     "answer": "Israel",
     "BR": "Genesis 32:28",
-    "level": 12
+    "level": 49
   },
   {
     "id": 212,
@@ -1728,7 +1728,7 @@ const questionsData = [
     "options": ["Kissed him", "Hugged him", "Bowed down", "Shouted"],
     "answer": "Bowed down",
     "BR": "Genesis 33:3",
-    "level": 12
+    "level": 50
   },
   {
     "id": 213,
@@ -1737,7 +1737,7 @@ const questionsData = [
     "options": ["EleloheIsrael", "Shammah", "El-Gibbor", "El-Shaddai"],
     "answer": "EleloheIsrael",
     "BR": "Genesis 33:20",
-    "level": 12
+    "level": 50
   },
   {
     "id": 214,
@@ -1746,7 +1746,7 @@ const questionsData = [
     "options": ["Rachael", "Leah", "Bilhah", "Zilpah"],
     "answer": "Leah",
     "BR": "Genesis 34:1",
-    "level": 12
+    "level": 50
   },
   {
     "id": 215,
@@ -1755,7 +1755,7 @@ const questionsData = [
     "options": ["Lemuel", "Hamor", "Shechem", "Shem"],
     "answer": "Shechem",
     "BR": "Genesis 34:2",
-    "level": 12
+    "level": 50
   },
   {
     "id": 216,
@@ -1763,6 +1763,6 @@ const questionsData = [
     "options": ["Prince", "King", "Priest", "Captain"],
     "answer": "Prince",
     "BR": "Genesis 34:2",
-    "level": 12
+    "level": 51
   }
 ];
