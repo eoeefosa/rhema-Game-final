@@ -45,6 +45,7 @@ class ButtomOptions extends StatelessWidget {
                 onTap: () {
                   questions.pauseTimer();
                   showDialog(
+                    
                       barrierDismissible: false,
                       barrierLabel: "Game paused",
                       context: context,

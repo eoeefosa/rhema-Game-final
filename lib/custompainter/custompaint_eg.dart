@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 final customPaint = CustomPaint(
@@ -39,7 +37,7 @@ class SmilyFaceDrawing extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // final radius = min(size.width, size.height) / 2;
     // final center = Offset(size.height / 2, size.height / 2);
-// 
+//
     // TODO: implement paint
   }
 
