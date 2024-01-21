@@ -24,6 +24,7 @@ class StoreScreen extends StatelessWidget {
               height: 8,
             ),
             StoreCard(
+              icon: const Icon(Icons.timer_sharp),
               width: width,
               title: "Buy Time",
               onPressed: () {
@@ -44,6 +45,7 @@ class StoreScreen extends StatelessWidget {
               height: 8,
             ),
             StoreCard(
+                icon: const Icon(Icons.h_mobiledata),
                 width: width,
                 onPressed: () {
                   if (playerProgress.points > 100) {
@@ -63,6 +65,7 @@ class StoreScreen extends StatelessWidget {
               height: 8,
             ),
             StoreCard(
+              icon: const Icon(Icons.change_circle),
               width: width,
               title: "Buy 50/50",
               onPressed: () {
@@ -92,10 +95,12 @@ class StoreCard extends StatelessWidget {
     required this.width,
     required this.title,
     this.onPressed,
+    required this.icon,
   });
 
   final double width;
   final String title;
+  final Widget icon;
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
@@ -119,10 +124,10 @@ class StoreCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
           child: Row(
             children: [
-              const Column(
+              Column(
                 children: [
-                  Icon(Icons.timer_sharp),
-                  Text('+10'),
+                  icon,
+                  const Text('+10'),
                 ],
               ),
               Expanded(

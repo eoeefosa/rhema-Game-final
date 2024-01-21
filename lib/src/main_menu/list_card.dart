@@ -16,6 +16,7 @@ class LIstcard extends StatelessWidget {
   Widget build(BuildContext context) {
     // final width = MediaQuery.of(context).size.width;
     final palette = context.watch<Palette>();
+    final size = MediaQuery.of(context).size;
 
     return TextButton(
       onPressed: onTap,
@@ -32,17 +33,32 @@ class LIstcard extends StatelessWidget {
       //   //   color: palette.inkFullOpacity,
       //   // ),
       // ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 30,
-          letterSpacing: 2,
-          // fontFamily: 'Comic Sans MS',
-          fontFamily: AppConstants.fontfamilypermenent,
-          color: palette.inkFullOpacity,
+      child: Container(
+        width: size.width < 500 ? size.width * 0.8 : 500,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            gradient: LinearGradient(
+              colors: [
+                Colors.yellow.shade300,
+                Colors.orange.shade700,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            )),
+
+        // padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+            letterSpacing: 2,
+            // fontFamily: 'Comic Sans MS',
+            fontFamily: AppConstants.fontfamilypermenent,
+            color: palette.inkFullOpacity,
+          ),
+          textAlign: TextAlign.center,
         ),
-        textAlign: TextAlign.center,
       ),
     );
   }
